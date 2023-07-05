@@ -1,10 +1,14 @@
 <template>
   <div>
     <router-view />
+    <!--<Barra /> -->
+
   </div>
 </template>
 
 <script setup>
+//import Barra from "./components/Barra.vue";
+
 import { onMounted } from "vue";
 import { storeToRefs } from "pinia";
 import { useRouter } from "vue-router";

@@ -1,5 +1,5 @@
 <template>
-  <Nav />
+  <Barra />
   <h1>Name: {{username}}</h1>
   <img :src="avatar_url ? avatar_url : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png'" alt="Profile picture">
 </template>
@@ -8,7 +8,7 @@
   import { supabase } from '../supabase'
   import { onMounted, ref, toRefs } from 'vue'
   import { useUserStore } from "../stores/user";
-  import Nav from '../components/Nav.vue';
+  import Barra from '../components/Barra.vue';
 
   const userStore = useUserStore();
 

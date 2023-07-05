@@ -1,6 +1,6 @@
 <template>
   <div class="wrapper">
-    <Nav />
+    <Barra />
 
     <div class="content"> 
       <h3>Your account:</h3>
@@ -16,7 +16,7 @@
 import { ref } from 'vue'
 import { useTaskStore } from "../stores/task";
 import { useRouter } from 'vue-router';
-import Nav from '../components/Nav.vue';
+import Barra from '../components/Barra.vue';
 import NewTask from '../components/NewTask.vue';
 import TaskItem from '../components/TaskItem.vue';
 

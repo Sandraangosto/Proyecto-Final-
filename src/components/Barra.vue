@@ -1,6 +1,6 @@
 <template>
   <nav>
-    <!-- <PersonalRouter :route="route" :buttonText="buttonText" class="logo-link"/> -->
+    <!--<PersonalRouter :route="route" :buttonText="buttonText" class="logo-link"/> -->
     <router-link to="/">
       Home
     </router-link>
@@ -18,7 +18,7 @@
     <div>
       <ul>
         <li class="log-out-welcome">
-          <p>Welcome, user</p>
+          <p>Welcome, {{ userEmail }}</p>
         </li>
         <li>
           <button @click="signOut" class="button">Log out</button>
@@ -53,6 +53,10 @@ const signOut = async () => {
   try{
     // call the user store and send the users info to backend to signOut
     // then redirect user to the homeView
+
+    await useUserStore().signOut();
+    redirect.push({ path: "/auth/login" });
+
   } catch (error) {}
 };
 
