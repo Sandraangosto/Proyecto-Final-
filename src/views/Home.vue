@@ -4,7 +4,7 @@
 
     <div class="content"> 
       <h3>Your account:</h3>
-      <router-link to="/account">Account</router-link>
+      <!--<router-link to="/account">Account</router-link>-->
     </div>
     <NewTask />
     <h1>Tasks:</h1>
@@ -13,7 +13,7 @@
 </template>
 
 <script setup>
-import { ref } from 'vue'
+import { ref, onMounted, computed } from 'vue'
 import { useTaskStore } from "../stores/task";
 import { useRouter } from 'vue-router';
 import Barra from '../components/Barra.vue';
@@ -31,6 +31,11 @@ const getTasks = async() => {
 };
 
 getTasks();
+
+onMounted(async () => {
+  await taskStore.fetchTasks();
+  console.log("taskOnmouted:", tasks.value);
+});
 
 </script>
 

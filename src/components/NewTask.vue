@@ -21,7 +21,7 @@
 </template>
 
 <script setup>
-import { ref } from "vue";
+import { ref,onMounted } from "vue";
 import { useTaskStore } from "../stores/task"   
 
 const taskStore = useTaskStore();

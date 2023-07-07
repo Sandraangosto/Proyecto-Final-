@@ -43,6 +43,7 @@ const buttonText = "Todo app";
 // constant to save a variable that will get the user from store with a computed function imported from vue
 // const getUser = computed(() => useUserStore().user);
 const getUser = useUserStore().user;
+console.log(useUserStore().user);
 
 // constant that calls user email from the useUSerStore
 const userEmail = ref("");
@@ -87,7 +88,7 @@ const getEmailPrefix = (email) => {
 }
 
 nav {
-  background-color: lightgray;
+  
   display: flex;
   width: 100%;
   justify-content: space-around;
@@ -98,7 +99,31 @@ nav ul {
   list-style: none;
   padding-inline-start: 0;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
+}
+
+.email{
+  color: black;
+}
+
+.barraLink{
+  text-decoration: none;
+  font-family: Copperplate, Copperplate Gothic Light, fantasy;
+  font-size: 15px;
+}
+
+.log-out {
+  font-family: Copperplate, Copperplate Gothic Light, fantasy;
+  height: 45px;
+  width: 100px;
+  align-content: center;
+  padding: 10px 15px;
+  background-color: #a504b7;
+  color: white;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  
 }
 </style>
