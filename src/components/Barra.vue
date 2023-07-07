@@ -1,27 +1,25 @@
 <template>
-  <nav>
-    <!--<PersonalRouter :route="route" :buttonText="buttonText" class="logo-link"/> -->
-    <router-link to="/">
-      Home
-    </router-link>
+  <nav class="menu">
+    <!-- <PersonalRouter :route="route" :buttonText="buttonText" class="logo-link"/> -->
+    <div class="logoImg">
+    <img class="barraImg" src="../Imagenes/logo.png" alt="logo"/>
+    </div>
 
-    <ul>
-        <li>
-          <router-link to="/">Task Manager</router-link>
-        </li>
+    <router-link to="/" class="linkBarra"> Home </router-link>
 
-        <li>
-          <router-link to="/account">Your Account</router-link>
-        </li>
-    </ul>
+    <router-link to="/account" class="linkBarra">Your Account</router-link>
 
-    <div>
+    <router-link to="/" class="linkBarra">Your Tasks</router-link>
+
+
+    <div class="">
       <ul>
         <li class="log-out-welcome">
-          <p>Welcome, {{ userEmail }}</p>
+          <p class="linkBarra">Welcome,  
+            <span class="email">{{ getEmailPrefix(getUser.email) }}</span></p>
         </li>
         <li>
-          <button @click="signOut" class="button">Log out</button>
+          <button @click="signOut" class="logOut">Log Out</button>
         </li>
       </ul>
     </div>
@@ -34,6 +32,9 @@ import { useUserStore } from "../stores/user";
 import { computed } from "vue";
 import { useRouter } from "vue-router";
 import { ref } from 'vue';
+import { supabase } from "../supabase";
+
+const user = supabase.auth.user();
 
 //constant to save a variable that will hold the use router method
 const route = "/";
@@ -44,7 +45,18 @@ const buttonText = "Todo app";
 const getUser = useUserStore().user;
 
 // constant that calls user email from the useUSerStore
-const userEmail = getUser.email;
+const userEmail = ref("");
+
+const userStore = useUserStore();
+const router = useRouter();
+
+const getUserEmail = () => {
+  const user = getUser.value;
+  if (user) {
+    userEmail.value = user.email;
+  }
+};
+getUserEmail();
 
 // async function that calls the signOut method from the useUserStore and pushes the user back to the Auth view.
 const redirect = useRouter();
@@ -60,10 +72,17 @@ const signOut = async () => {
   } catch (error) {}
 };
 
+const getEmailPrefix = (email) => {
+  const atIndex = email.indexOf('@');
+  if (atIndex !== -1) {
+    return email.slice(0, atIndex);
+  }
+  return email;
+};
 </script>
 
 <style>
-.navbar-img {
+.barraImg {
   width: 90px;
 }
 

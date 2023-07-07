@@ -1,5 +1,10 @@
 <template>
-    <h1>Add a new Task</h1>
+    <div class="addTask">
+        <h1>Add a new Task</h1>
+        <p>Keep Your Tasks Here! </p>
+        <div>
+            <p><strong>Today is {{ formattDate }}</strong></p>
+        </div>
     <div v-if="showErrorMessage">
         <p class="error-text">{{ errorMessage }}</p>
     </div>
@@ -11,6 +16,7 @@
             <input type="text" placeholder="Add a Task Description - Look up Kendrick Lamar's FEAR album on spotify and listen to the whole album." v-model="description">
         </div>
         <button @click="addTask" class="button">Add</button>
+    </div>
     </div>
 </template>
 
@@ -50,6 +56,24 @@ if(name.value.length === 0 || description.value.length === 0){
 }
 };
 
+const currentDate = ref(new Date());
+
+const updateCurrentDate = () => {
+  currentDate.value = new Date();
+};
+
+onMounted(() => {
+  updateCurrentDate();
+  setInterval(updateCurrentDate, 24 * 60 * 60 * 1000); 
+});
+
+const formattedDate = ref('');
+
+onMounted(() => {
+  const options = { day: 'numeric', month: 'long', year: 'numeric' };
+  const formatter = new Intl.DateTimeFormat('en', options);
+  formattedDate.value = formatter.format(currentDate.value);
+});
 </script>
 
 <style></style>
