@@ -76,5 +76,15 @@ onMounted(() => {
 });
 </script>
 
-<style></style>
+<style>
+.header-title{
+  color:gold;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 80px;
+  font-family: Copperplate, Copperplate Gothic Light, fantasy;
+}
+
+
+</style>
   
