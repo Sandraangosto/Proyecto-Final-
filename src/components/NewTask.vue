@@ -1,9 +1,9 @@
 <template>
     <div class="addTask">
-        <h1>Add a new Task</h1>
-        <p>Keep Your Tasks Here! </p>
+        <h1 class="titulo">Add a new Task</h1>
+        <p class="subtitulo">Keep Your Tasks Here! </p>
         <div>
-            <p><strong>Today is {{ formattDate }}</strong></p>
+            <p><strong class="date">Today is {{ formattDate }}</strong></p>
         </div>
     <div v-if="showErrorMessage">
         <p class="error-text">{{ errorMessage }}</p>
@@ -77,13 +77,68 @@ onMounted(() => {
 </script>
 
 <style>
-.header-title{
+.titulo{
   color:gold;
   text-align: center;
   margin-bottom: 20px;
-  font-size: 80px;
+  font-size: 60px;
   font-family: Copperplate, Copperplate Gothic Light, fantasy;
 }
+
+.subtitulo{
+  color: gold;
+  text-align: center;
+  margin-top: 30px;
+  margin-bottom: 10px;
+  font-size: 20px;
+  font-family:Copperplate, Copperplate Gothic Light, fantasy;
+}
+
+.date{
+  color:gold;
+  font-family: Copperplate, Copperplate Gothic Light, fantasy;
+
+}
+
+.addTask {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 60vh;
+}
+
+.input-field {
+  margin-bottom: 8px;
+}
+
+.input-field input {
+  width: 600px;
+  height: 50px;
+  border-radius: 4px;
+  padding: 8px 8px;
+}
+
+.input-field textarea{
+padding: 8px 8px;
+height: 55px;
+width: 600px;
+border-radius: 4px;
+}
+
+.button {
+  width:500px;
+  padding: 10px 20px;
+  background-color:#a504b7;
+  color: gold;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+
+
+
 
 
 </style>
