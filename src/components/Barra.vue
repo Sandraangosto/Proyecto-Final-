@@ -46,7 +46,7 @@ const getUser = useUserStore().user;
 console.log(useUserStore().user);
 
 // constant that calls user email from the useUSerStore
-const userEmail = ref("");
+const userEmail = getUser.email;
 
 const userStore = useUserStore();
 const router = useRouter();
@@ -84,11 +84,11 @@ const getEmailPrefix = (email) => {
 
 <style>
 .barraImg {
-  width: 90px;
+  width: 80px;
 }
 
 nav {
-  
+  background-color: rgb(25, 91, 157);
   display: flex;
   width: 100%;
   justify-content: space-around;
@@ -99,12 +99,17 @@ nav ul {
   list-style: none;
   padding-inline-start: 0;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   align-items: center;
 }
 
+.linkBarra{
+  color: white;
+  text-decoration: none;
+}
+
 .email{
-  color: black;
+  color: white;
 }
 
 .barraLink{

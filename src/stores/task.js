@@ -3,6 +3,7 @@ import { defineStore } from "pinia";
 import { supabase } from "../supabase";
 import { useUserStore } from "./user";
 
+
 export const useTaskStore = defineStore("tasks", () => {
   // Esta tienda utiliza el Composition API
   const tasksArr = ref(null);
@@ -33,5 +34,5 @@ export const useTaskStore = defineStore("tasks", () => {
       id: id,
     });
   };
-  return { tasksArr, fetchTasks, addTask, deleteTask };
+  return { tasksArr, fetchTasks, addTask, deleteTask, updateTask, completeTask };
 });

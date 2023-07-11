@@ -60,7 +60,7 @@
 </template>
 
 <script setup>
-import { ref, computed } from "vue";
+import { ref, reactive, watch } from "vue";
 import PersonalRouter from "./PersonalRouter.vue";
 import { supabase } from "../supabase";
 import { useRouter } from "vue-router";
@@ -104,4 +104,19 @@ const signUp = async () => {
 };
 </script>
 
-<style></style>
+<style>
+ .container{
+  height: 100vh;
+  width: 100%;
+  background-size: cover;
+  background-image: url('../Imagenes/background.jpeg');
+  background-repeat: no-repeat; 
+  background-position: center;
+}
+
+
+
+
+
+
+</style>

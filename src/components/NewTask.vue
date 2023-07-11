@@ -77,6 +77,18 @@ onMounted(() => {
 </script>
 
 <style>
+
+.addTask{
+  background-image: url("../Imagenes/background.jpeg");
+  height: 100vh;
+  width: 100%;
+  text-align: center;
+  position: relative;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+
 .titulo{
   color:gold;
   text-align: center;
