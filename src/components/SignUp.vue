@@ -3,6 +3,7 @@
 
     <div class="header">
       <div class="header-description">
+        <img class="logo" src="../Imagenes/logo.png" alt="logo">
         <h3 class="header-title">Register to ToDo App</h3>
         <p class="header-subtitle">Start organizing your tasks!</p>
       </div>
@@ -100,11 +101,22 @@ const signUp = async () => {
     }
     return;
   }
-  errorMsg.value = "error";
+  errorMsg.value = "Los datos introducidos, no son corretos.";
 };
 </script>
 
 <style>
+p {
+  text-align: center;
+  margin-top: 10px;
+  color: white;
+  font-family: Copperplate, Copperplate Gothic Light, fantasy;
+}
+
+.sign-up-link{
+  color: white;
+  font-family: Copperplate, Copperplate Gothic Light, fantasy;
+}
  .container{
   height: 100vh;
   width: 100%;
@@ -114,8 +126,57 @@ const signUp = async () => {
   background-position: center;
 }
 
+.header-title {
+  color:gold;
+  text-align: center;
+  margin-bottom: 20px;
+  font-size: 45px;
+  font-family: Copperplate, Copperplate Gothic Light, fantasy;
+}
 
+.header-subtitle {
+  color: white;
+  text-align: center;
+  margin-bottom: 9px;
+  font-size: 20px;
+  font-family: Copperplate, Copperplate Gothic Light, fantasy;
+}
 
+.logo {
+  border-radius: 10px;
+  margin-top: 60px;
+  margin-bottom:15px ;
+  height: 125px;
+  width: 125px;
+}
+
+.form-sign-in {
+  padding: 10px 10px 10px 10px;
+}
+.form-input {
+  margin-bottom: 5px;
+}
+.input-field-label {
+  font-size: 15px;
+  font-family: Copperplate, Copperplate Gothic Light, fantasy;
+  color: white
+}
+
+.input-field {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid;
+  border-radius: 5px;
+}
+
+.button {
+  padding: 13px 18px;
+  background-color: gold;
+  color: black;
+  border: none;
+  border-radius: 5px;
+  width: 80%;
+}
 
 
 
