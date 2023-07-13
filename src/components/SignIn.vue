@@ -51,19 +51,24 @@
 </template>
 
 <script setup>
-//import PersonalRouter from "./PersonalRouter.vue";
+import PersonalRouter from "./PersonalRouter.vue";
 import { useRouter } from "vue-router";
 import { useUserStore } from "../stores/user";
-import { ref } from "vue";
+import { ref, computed } from "vue";
+import { supabase } from "../supabase";
+import { storeToRefs } from "pinia";
 
-// Route Variables
-//const route = "/auth/signup";
-//const buttonText = "Sign Up";
+
+//Route Variables
+const route = "/auth/signup";
+const buttonText = "Sign Up";
 
 const email = ref("");
 const password = ref("");
 const redirect = useRouter();
 const userStore = useUserStore();
+const errorMsg = ref("");
+
 
 // Arrow function to Signin user to supaBase
 const signIn = async () => {
@@ -71,7 +76,10 @@ const signIn = async () => {
     await userStore.signIn(email.value, password.value);
     redirect.push("/");
   } catch (error) {
-    console.error(error);
+    errorMsg.value = `Error: ${error.message}`;
+    setTimeout(() => {
+      errorMsg.value = null;
+    }, 2500);
   }
 };
 

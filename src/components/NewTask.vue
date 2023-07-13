@@ -18,11 +18,15 @@
         <button @click="addTask" class="button">Add</button>
     </div>
     </div>
+
+    
 </template>
 
 <script setup>
 import { ref,onMounted } from "vue";
-import { useTaskStore } from "../stores/task"   
+import { useTaskStore } from "../stores/task" 
+import { supabase } from "../supabase";
+
 
 const taskStore = useTaskStore();
 
@@ -35,6 +39,8 @@ const showErrorMessage = ref(false);
 
 // const constant to save a variable that holds the value of the error message
 const errorMessage = ref(null);
+const emit = defineEmits(["addTitle"]);
+
 
 // Arrow function para crear tareas.
 const addTask = () => {
@@ -51,8 +57,11 @@ if(name.value.length === 0 || description.value.length === 0){
     // Aquí mandamos los valores a la store para crear la nueva Task. Esta parte de la función tenéis que refactorizarla para que funcione con emit y el addTask del store se llame desde Home.vue.
 
     taskStore.addTask(name.value, description.value);
-    name.value = '';
-    description.value = '';
+    name.value = "";
+    description.value = "";
+
+    emit("addTitle");
+
 }
 };
 
@@ -74,8 +83,22 @@ onMounted(() => {
   const formatter = new Intl.DateTimeFormat('en', options);
   formattedDate.value = formatter.format(currentDate.value);
 });
+
 </script>
 
+<script>
+export default {
+  methods: {
+    scrollToBottom() {
+      window.scrollTo({
+        top: document.body.scrollHeight,
+        behavior: "smooth"
+      });
+    }
+  }
+}
+
+</script>
 <style>
 
 .addTask{

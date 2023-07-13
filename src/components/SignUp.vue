@@ -54,6 +54,7 @@
           />
         </p>
       </div>
+      
     </form>
 
     <div v-show="errorMsg">{{errorMsg}}</div>
