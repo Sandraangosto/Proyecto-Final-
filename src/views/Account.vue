@@ -1,4 +1,5 @@
 <template>
+  
   <Barra />
   <div class="container">
     <div class="profile">
