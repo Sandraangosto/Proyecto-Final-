@@ -12,23 +12,25 @@
         <!-- <button @click=>Marcar como completada</button> -->
         <div class="buttons">
           <button @click="completedTask" class="botton1">
-            <img
+           <!-- <img
               src="../../assets/vecteezy_check-mark-icon-sign-symbol-design_10141449_805.png"
               alt="Completar"
             />
+            -->
             <!-- {{ task.is_complete ? "No completada 😐" : "Completada!" }} -->
           </button>
         <!-- boton de borrar tareas -->
         <button @click="showModalToggle" class="botton3">
-            <img
+            <!--<img
               src="../../assets/TaskItem_Botons/papelera_borrar.png"
               alt="Borrar"
             />
+            -->
           </button>
 
           <!-- boton para editar tareas -->
           <button @click="inputToggle" class="botton2">
-            <img src="../../assets/TaskItem_Botons/editar.png" alt="Edit" />
+           <!-- <img src="../../assets/TaskItem_Botons/editar.png" alt="Edit" /> -->
           </button>
           <div v-if="showInput">
             <div class="container-edit">
