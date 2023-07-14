@@ -10,6 +10,7 @@
     <h1>Tasks:</h1>
     <TaskItem v-for="task in tasks" :key="task.id" :task="task" />
   </div>
+  <Footer />
 </template>
 
 <script setup>
@@ -19,6 +20,8 @@ import { useRouter } from 'vue-router';
 import Barra from '../components/Barra.vue';
 import NewTask from '../components/NewTask.vue';
 import TaskItem from '../components/TaskItem.vue';
+import Footer from '../components/Footer.vue';
+
 
 const taskStore = useTaskStore();
 

@@ -105,7 +105,8 @@ nav ul {
 
 .linkBarra{
   color: gold;
-  text-decoration: none;;
+  text-decoration: none;
+  font-size: 3vh;
 }
 
 .email{
