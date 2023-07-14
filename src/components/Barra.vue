@@ -85,10 +85,10 @@ const getEmailPrefix = (email) => {
 <style>
 .barraImg {
   width: 80px;
+  
 }
 
 nav {
-  background-color: rgb(25, 91, 157);
   display: flex;
   width: 100%;
   justify-content: space-around;
@@ -104,12 +104,12 @@ nav ul {
 }
 
 .linkBarra{
-  color: white;
+  color: gold;
   text-decoration: none;;
 }
 
 .email{
-  color: white;
+  color: gold;
 }
 
 .barraLink{
@@ -125,7 +125,6 @@ nav ul {
   align-content: center;
   padding: 10px 15px;
   background-color: #a504b7;
-  color: white;
   border: none;
   border-radius: 5px;
   cursor: pointer;

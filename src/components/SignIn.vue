@@ -115,7 +115,6 @@ p {
   background-repeat: no-repeat;
   background-size: cover;
 }
-
 .input-pasword{
   position: relative;
   padding-right: 35px;
@@ -129,7 +128,6 @@ p {
 }
 .togglePasswordVisibility{
   flex-wrap: wrap;
-  color: #467ffa;
   position: fixed;
   top: 55%;
   right: 700px; 
@@ -156,7 +154,7 @@ p {
 
 .logoImg{
   border-radius: 15px;
-  margin-top: 80px;
+  margin-top: 10px;
   margin-bottom:20px ;
   height: 120px;
   width: 120px;
