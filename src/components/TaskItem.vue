@@ -21,16 +21,13 @@
           </button>
         <!-- boton de borrar tareas -->
         <button @click="showModalToggle" class="botton3">
-            <!--<img
-              src="../../assets/TaskItem_Botons/papelera_borrar.png"
-              alt="Borrar"
-            />
-            -->
+            <img src="../components/Imagenes/boton-eliminar" alt="Borrar"/>
+          
           </button>
 
           <!-- boton para editar tareas -->
           <button @click="inputToggle" class="botton2">
-           <!-- <img src="../../assets/TaskItem_Botons/editar.png" alt="Edit" /> -->
+           <img src="../components/Imagenes/boton-editar.webp" alt="Edit" /> 
           </button>
           <div v-if="showInput">
             <div class="container-edit">
@@ -55,18 +52,9 @@
                   class="textInput"
                 />
               </div>
-            <!-- <div>
-              <p>Escribe una descripción</p>
-              <input
-                type="text"
-                v-model="newDescription"
-                placeholder="Introduce una nueva descripción"
-              />
-            </div> -->
             <button @click="sendData" class="button8">
               <span class="button8-content">Actualizar tarea</span>
             </button>
-            <!-- <button @click="sendData"><p>Enviar datos</p></button> -->
           </div>
         </div>
         </div>
@@ -75,16 +63,10 @@
   </div>
   <div class="aviso-modal" v-if="showModal">
     <div class="modal">
-      <img
-        class="warning"
-        src="../../assets/warning-icon-png-2756.png"
-        alt="alert"
-      />
+      <img class="warning" src="../components/Imagenes/icono-error.png" alt="alert"/>
 
       <div class="columns-modal">
-        <h2>
-          Seguro que quieres <br />
-          borrar esta tarea?
+        <h2>Seguro que quieres <br/> borrar esta tarea?
         </h2>
         <div class="buttons-modal">
           <button @click="deleteTask" class="button8">
@@ -95,7 +77,6 @@
         <button @click="showModalToggle" class="button8">
           <span class="button8-content">No, quiero cancelar </span>
         </button>
-        <!-- <button @click="deleteTask">Si quiero!</button>
     <button @click="showModalToggle">No, mejor no!</button> -->
       </div>
     </div>
