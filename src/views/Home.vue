@@ -3,13 +3,18 @@
     <Barra />
 
     <div class="content"> 
-      <h3>Your account:</h3>
+      <!--<h3>Your account:</h3>-->
       <!--<router-link to="/account">Account</router-link>-->
     </div>
     <NewTask />
-    <h1>Tasks:</h1>
+    <!--<h1>Tasks:</h1>-->
     <TaskItem v-for="task in tasks" :key="task.id" :task="task" />
   </div>
+  <br>
+  <br>
+  <br>
+  <br>
+  
   <Footer />
 </template>
 
