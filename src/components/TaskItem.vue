@@ -12,12 +12,7 @@
         <!-- <button @click=>Marcar como completada</button> -->
         <div class="buttons">
           <button @click="completedTask" class="botton1">
-           <!-- <img
-              src="../../assets/vecteezy_check-mark-icon-sign-symbol-design_10141449_805.png"
-              alt="Completar"
-            />
-            -->
-            <!-- {{ task.is_complete ? "No completada 😐" : "Completada!" }} -->
+           
           </button>
         <!-- boton de borrar tareas -->
         <button @click="showModalToggle" class="botton3">
@@ -33,24 +28,11 @@
             <div class="container-edit">
               <div class="textInputWrapper">
                 <input
-                  v-model="newTitle"
-                  placeholder="Introduce un nuevo titulo"
-                  type="text"
-                  class="textInput"
-                />
+                  v-model="newTitle" placeholder="Introduce un nuevo titulo" type="text" class="textInput"/>
               </div>
-              <!-- <input
-                type="text"
-                v-model="newTitle"
-                placeholder="Introduce un nuevo titulo"
-              /> -->
+              
             <div class="textInputWrapper">
-                <input
-                  v-model="newDescription"
-                  placeholder="Introduce un nuevo descripción"
-                  type="text"
-                  class="textInput"
-                />
+                <input v-model="newDescription" placeholder="Introduce un nuevo descripción" type="text" class="textInput"/>
               </div>
             <button @click="sendData" class="button8">
               <span class="button8-content">Actualizar tarea</span>
