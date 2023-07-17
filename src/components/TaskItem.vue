@@ -8,19 +8,20 @@
         <p :class="props.task.is_complete ? 'done' : 'pending'">
           {{ task.description }}
         </p>
-        <div class="buttons">
-          <button @click="completedTask" class="botton1">
+        <div class="botones">
+          <button @click="completedTask" class="boton1">
+            <img src="../Imagenes/tarea-completada.webp" alt="tarea-completada"/>
            
           </button>
         <!-- boton de borrar tareas -->
-        <button @click="showModalToggle" class="botton3">
-            <img src="../components/Imagenes/boton-eliminar.png" alt="Borrar"/>
+        <button @click="showModalToggle" class="boton3">
+            <img src="../Imagenes/boton-eliminar.png" alt="Borrar"/>
           
           </button>
 
           <!-- boton para editar tareas -->
-          <button @click="inputToggle" class="botton2">
-           <img src="../components/Imagenes/boton-editar.webp" alt="Edit" /> 
+          <button @click="inputToggle" class="boton2">
+           <img src="../Imagenes/boton-editar.webp" alt="Edit" /> 
           </button>
           <div v-if="showInput">
             <div class="container-edit">
@@ -32,8 +33,8 @@
             <div class="textInputWrapper">
                 <input v-model="newDescription" placeholder="Introduce un nuevo descripción" type="text" class="textInput"/>
               </div>
-            <button @click="sendData" class="button8">
-              <span class="button8-content">Actualizar tarea</span>
+            <button @click="sendData" class="boton8">
+              <span class="boton8-content">Actualizar tarea</span>
             </button>
           </div>
         </div>
@@ -43,21 +44,20 @@
   </div>
   <div class="aviso-modal" v-if="showModal">
     <div class="modal">
-      <img class="warning" src="../components/Imagenes/boton-eliminar.png" alt="alert"/>
+      <img class="warning" src="../Imagenes/icono-error.png" alt="alert"/>
 
       <div class="columns-modal">
         <h2>Seguro que quieres <br/> borrar esta tarea?
         </h2>
         <div class="buttons-modal">
-          <button @click="deleteTask" class="button8">
-            <span class="button8-content">Si, quiero borrar! </span>
+          <button @click="deleteTask" class="boton8">
+            <span class="boton8-content">Si, quiero borrar! </span>
           </button>
         </div>
 
-        <button @click="showModalToggle" class="button8">
-          <span class="button8-content">No, quiero cancelar </span>
+        <button @click="showModalToggle" class="boton8">
+          <span class="boton8-content">No, quiero cancelar </span>
         </button>
-    <button @click="showModalToggle">No, mejor no!</button>
       </div>
     </div>
   </div>
@@ -153,9 +153,9 @@ const toggleComplete = () => {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9999;
-  background: linear-gradient( red, #e6b3a5);
-  width: 50vw;
-  height: 50vh;
+  background: linear-gradient( rgb(122, 224, 13), #e6b3a5);
+  width: 60vw;
+  height: 60vh;
   display: flex;
   flex-direction: row;
   justify-content: center;
@@ -163,6 +163,40 @@ const toggleComplete = () => {
   gap: 5vw;
   color: black;
   animation: fade-in 0.5s forwards, modal-grow 0.5s forwards;
+}
+.aviso-modal {
+  z-index: 1;
+  background-color: #00000080;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+}
+.boton8 {
+  position: relative;
+  overflow: hidden;
+  height: 3rem;
+  padding: 0 2rem;
+  border-radius: 1.5rem;
+  background: #3d3a4e;
+  background-size: 400%;
+  color: #fff;
+}
+
+.textInputWrapper {
+  position: relative;
+  width: 180px;
+  margin: 12px 5px;
+  --accent-color: #fbf8f5;
+}
+.boton3{
+  width: 8%;
+  height:8%;
+}
+.boton1{
+  width: 100%;
+  height:100%;
 }
 </style>
 
