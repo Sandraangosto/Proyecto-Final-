@@ -10,18 +10,18 @@
         </p>
         <div class="botones">
           <button @click="completedTask" class="boton1">
-            <img src="../Imagenes/tarea-completada.webp" alt="tarea-completada"/>
+            <img src="../Imagenes/tarea-completada.png" alt="tarea-completada"/>
            
           </button>
         <!-- boton de borrar tareas -->
         <button @click="showModalToggle" class="boton3">
-            <img src="../Imagenes/boton-eliminar.png" alt="Borrar"/>
+            <img src="../Imagenes/borrar.png" alt="Borrar"/>
           
           </button>
 
           <!-- boton para editar tareas -->
           <button @click="inputToggle" class="boton2">
-           <img src="../Imagenes/boton-editar.webp" alt="Edit" /> 
+           <img src="../Imagenes/editar.png" alt="Edit" /> 
           </button>
           <div v-if="showInput">
             <div class="container-edit">
@@ -143,6 +143,9 @@ const toggleComplete = () => {
 
 <style scoped>
 
+.task-item-fondo{
+  background-color: red;
+}
 .taskComplete {
   font-family: Copperplate, Copperplate Gothic Light, fantasy;
 }
