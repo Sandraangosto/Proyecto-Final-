@@ -62,6 +62,9 @@ if(name.value.length === 0 || description.value.length === 0){
 
     emit("addTitle");
 
+    location.reload();
+
+
 }
 };
 
@@ -99,7 +102,7 @@ export default {
 }
 
 </script>
-<style>
+<style scoped>
 
 .addTask{
   background-image: url("../Imagenes/background.jpeg");

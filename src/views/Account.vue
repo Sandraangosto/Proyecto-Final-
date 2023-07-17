@@ -73,7 +73,7 @@
 
 </script>
 
-<style>
+<style scoped>
 img {
   width: 200px;
   border-radius: 50%;

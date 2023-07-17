@@ -82,7 +82,7 @@ const getEmailPrefix = (email) => {
 };
 </script>
 
-<style>
+<style scoped>
 .barraImg {
   width: 80px;
   

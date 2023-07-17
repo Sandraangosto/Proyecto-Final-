@@ -95,7 +95,7 @@ const togglePasswordVisibility = (field) => {
 };
 </script>
 
-<style>
+<style scoped>
 p {
   text-align: center;
   margin-top: 10px;

@@ -2,21 +2,19 @@
 <div class="task-item-fondo">
     <div class="card">
       <div class="card2">
-        <!-- los case hacen relacion a el boton de completar -->
         <h3 :class="props.task.is_complete ? 'done' : 'pending'">
           {{ task.title }}
         </h3>
         <p :class="props.task.is_complete ? 'done' : 'pending'">
           {{ task.description }}
         </p>
-        <!-- <button @click=>Marcar como completada</button> -->
         <div class="buttons">
           <button @click="completedTask" class="botton1">
            
           </button>
         <!-- boton de borrar tareas -->
         <button @click="showModalToggle" class="botton3">
-            <img src="../components/Imagenes/boton-eliminar" alt="Borrar"/>
+            <img src="../components/Imagenes/boton-eliminar.png" alt="Borrar"/>
           
           </button>
 
@@ -45,7 +43,7 @@
   </div>
   <div class="aviso-modal" v-if="showModal">
     <div class="modal">
-      <img class="warning" src="../components/Imagenes/icono-error.png" alt="alert"/>
+      <img class="warning" src="../components/Imagenes/boton-eliminar.png" alt="alert"/>
 
       <div class="columns-modal">
         <h2>Seguro que quieres <br/> borrar esta tarea?
@@ -59,7 +57,7 @@
         <button @click="showModalToggle" class="button8">
           <span class="button8-content">No, quiero cancelar </span>
         </button>
-    <button @click="showModalToggle">No, mejor no!</button> -->
+    <button @click="showModalToggle">No, mejor no!</button>
       </div>
     </div>
   </div>
@@ -95,18 +93,23 @@ function inputToggle() {
 //funcion para completar tareas
 const completedTask = () => {
   emit("childComplete", props.task);
+  location.reload();
+
 };
 
 // Función para borrar la tarea a través de la store. El problema que tendremos aquí (y en NewTask.vue) es que cuando modifiquemos la base de datos los cambios no se verán reflejados en el v-for de Home.vue porque no estamos modificando la variable tasks guardada en Home. Usad el emit para cambiar esto y evitar ningún page refresh.
 const deleteTask = async() => {
     await taskStore.deleteTask(props.task.id);
     emit("updateTask");
+    location.reload();
+
 
 };
 
 const showModal = ref(false);
 const showModalToggle = () => {
   showModal.value = !showModal.value;
+
 };
 
 const showErrorMess = ref(false);
@@ -127,6 +130,8 @@ const sendData = async () => {
     taskStore.editTask(newTitle.value, newDescription.value, props.task.id);
     showInput.value = !showInput.value;
     emit("editChild", newTaskEdited);
+    location.reload();
+
   }
 };
 
@@ -136,7 +141,7 @@ const toggleComplete = () => {
 };
 </script>
 
-<style>
+<style scoped>
 
 .taskComplete {
   font-family: Copperplate, Copperplate Gothic Light, fantasy;
@@ -148,7 +153,7 @@ const toggleComplete = () => {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9999;
-  background: linear-gradient(145deg, #ffffff, #e6b3a5);
+  background: linear-gradient( red, #e6b3a5);
   width: 50vw;
   height: 50vh;
   display: flex;
@@ -156,7 +161,7 @@ const toggleComplete = () => {
   justify-content: center;
   align-items: center;
   gap: 5vw;
-  color: white;
+  color: black;
   animation: fade-in 0.5s forwards, modal-grow 0.5s forwards;
 }
 </style>

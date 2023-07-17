@@ -7,14 +7,14 @@
       <!--<router-link to="/account">Account</router-link>-->
     </div>
     <NewTask />
-    <!--<h1>Tasks:</h1>-->
+    <h1>Tasks:</h1>
     <TaskItem v-for="task in tasks" :key="task.id" :task="task" />
   </div>
   <br>
   <br>
   <br>
   <br>
-  
+
   <Footer />
 </template>
 
@@ -47,7 +47,9 @@ onMounted(async () => {
 
 </script>
 
-<style></style>
+<style scoped>
+
+</style>
 
 <!-- 
 **Hints**

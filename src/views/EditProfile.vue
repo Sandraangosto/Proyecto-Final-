@@ -101,7 +101,7 @@ const uploadAvatar = async (evt) => {
 };
 </script>
 
-<style>
+<style scoped>
 .edit-profile {
   color: gold;
   display: flex;
