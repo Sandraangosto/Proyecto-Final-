@@ -167,8 +167,8 @@ border-radius: 4px;
 .button {
   width:500px;
   padding: 10px 20px;
-  background-color:#a504b7;
-  color: gold;
+  background-color:gold;
+  color: black;
   border: none;
   border-radius: 4px;
   cursor: pointer;

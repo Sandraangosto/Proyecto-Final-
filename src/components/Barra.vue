@@ -83,9 +83,10 @@ const getEmailPrefix = (email) => {
 </script>
 
 <style scoped>
+
 .barraImg {
   width: 80px;
-  
+  background-color: transparent;
 }
 
 nav {
@@ -93,39 +94,43 @@ nav {
   width: 100%;
   justify-content: space-around;
   align-items: center;
+  background-color: transparent;
+
 }
 
 nav ul {
   list-style: none;
-  padding-inline-start: 0;
   display: flex;
   flex-direction: column;
   align-items: center;
+  background-color: transparent;
+
 }
 
 .linkBarra{
   color: gold;
   text-decoration: none;
   font-size: 3vh;
+  text-decoration: none;
+  font-family: Copperplate, Copperplate Gothic Light, fantasy;
+  background-color: transparent;
+  
 }
 
 .email{
   color: gold;
+  background-color: transparent;
+
 }
 
-.barraLink{
-  text-decoration: none;
-  font-family: Copperplate, Copperplate Gothic Light, fantasy;
-  font-size: 15px;
-}
 
-.log-out {
+.logOut {
   font-family: Copperplate, Copperplate Gothic Light, fantasy;
   height: 45px;
   width: 100px;
   align-content: center;
   padding: 10px 15px;
-  background-color: #a504b7;
+  background-color: gold;
   border: none;
   border-radius: 5px;
   cursor: pointer;
