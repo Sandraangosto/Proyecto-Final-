@@ -51,4 +51,6 @@ const editTask = async (title, description, id) => {
    title: title,
    description: description,
   }).match({id: id});
+  location.reload();
+
  };

@@ -1,6 +1,13 @@
 <template>
   <div class="wrapper">
     <Barra />
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+
 
     <div class="content"> 
       <!--<h3>Your account:</h3>-->
@@ -14,14 +21,13 @@
    <br>
    <br>
    <br>
+   <div class="taskItem">
     <TaskItem v-for="task in tasks" :key="task.id" :task="task" />
+    </div>
+    <Footer />
   </div>
-  <br>
-  <br>
-  <br>
-  <br>
 
-  <Footer />
+  
 </template>
 
 <script setup>
@@ -57,6 +63,15 @@ onMounted(async () => {
 *{
   background-color: rgb(20, 123, 213);
 
+}
+
+.taskItem{
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  width: 100%;
+  height: 250px;
+  
 }
 </style>
 

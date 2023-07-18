@@ -126,6 +126,7 @@ const sendData = async () => {
     setTimeout(() => {
       showErrorMess.value = false;
     }, 5000);
+    location.reload();
   } else {
     taskStore.editTask(newTitle.value, newDescription.value, props.task.id);
     showInput.value = !showInput.value;
@@ -146,7 +147,9 @@ const toggleComplete = () => {
 <style scoped>
 
 .task-item-fondo{
-  background-color: #fff;
+  background-color: rgb(20, 123, 213);
+  width: 25%;
+
 }
 .taskComplete {
   font-family: Copperplate, Copperplate Gothic Light, fantasy;
@@ -200,17 +203,21 @@ const toggleComplete = () => {
   width: 10%;
   height:10%;
   margin-right: 10px;
+  background: none;
+  border: none;
 
 }
-.boton1{
+.boton1, .boton2{
   width: 10%;
   height: 10%;
   margin-right: 10px;
+  background: none;
+  border: none;
 
 }
 .card{
-  width: 30%;
-  height: 30%;
+  width: 100%;
+  height: 100%;
   border: 1px solid black;
   background-color: white;
   text-align: center;
