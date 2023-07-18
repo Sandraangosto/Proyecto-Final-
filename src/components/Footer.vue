@@ -10,7 +10,7 @@
   
   <style scoped>
  p {
-  background-color: rgb(51, 51, 132);
+  background-color: rgb(20, 123, 213);
   color: gold;
  }
   </style>

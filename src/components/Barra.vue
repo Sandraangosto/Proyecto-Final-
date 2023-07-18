@@ -90,7 +90,7 @@ const getEmailPrefix = (email) => {
 }
 
 nav {
-  background-color: rgb(51, 51, 132);
+  background-color: rgb(20, 123, 213);
   display: flex;
   width: 100%;
   justify-content: space-around;

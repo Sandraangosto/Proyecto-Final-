@@ -138,13 +138,15 @@ const sendData = async () => {
 const toggleComplete = () => {
   props.task.is_complete = !props.task.is_complete;
   taskStore.completeTask(props.task.id, props.task.is_complete);
+  location.reload();
+
 };
 </script>
 
 <style scoped>
 
 .task-item-fondo{
-  background-color: red;
+  background-color: #fff;
 }
 .taskComplete {
   font-family: Copperplate, Copperplate Gothic Light, fantasy;
@@ -156,7 +158,7 @@ const toggleComplete = () => {
   left: 50%;
   transform: translate(-50%, -50%);
   z-index: 9999;
-  background: linear-gradient( rgb(122, 224, 13), #e6b3a5);
+  background: linear-gradient( rgb(253, 0, 0), #e55454);
   width: 60vw;
   height: 60vh;
   display: flex;
@@ -185,6 +187,7 @@ const toggleComplete = () => {
   background: #3d3a4e;
   background-size: 400%;
   color: #fff;
+  margin-right: 10px;
 }
 
 .textInputWrapper {
@@ -194,12 +197,24 @@ const toggleComplete = () => {
   --accent-color: #fbf8f5;
 }
 .boton3{
-  width: 8%;
-  height:8%;
+  width: 10%;
+  height:10%;
+  margin-right: 10px;
+
 }
 .boton1{
-  width: 100%;
-  height:100%;
+  width: 10%;
+  height: 10%;
+  margin-right: 10px;
+
+}
+.card{
+  width: 30%;
+  height: 30%;
+  border: 1px solid black;
+  background-color: white;
+  text-align: center;
+  justify-content: space-between;
 }
 </style>
 

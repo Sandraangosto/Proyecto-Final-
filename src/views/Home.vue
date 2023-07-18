@@ -6,8 +6,14 @@
       <!--<h3>Your account:</h3>-->
       <!--<router-link to="/account">Account</router-link>-->
     </div>
+    <br>
+    <br>
+    <br>
     <NewTask />
-    <h1>Tasks:</h1>
+   <!--x<h1>Tasks:</h1>-->
+   <br>
+   <br>
+   <br>
     <TaskItem v-for="task in tasks" :key="task.id" :task="task" />
   </div>
   <br>
@@ -48,7 +54,10 @@ onMounted(async () => {
 </script>
 
 <style scoped>
+*{
+  background-color: rgb(20, 123, 213);
 
+}
 </style>
 
 <!-- 

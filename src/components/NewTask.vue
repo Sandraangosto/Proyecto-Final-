@@ -105,7 +105,7 @@ export default {
 <style scoped>
 
 .addTask{
-  background-image: url("../Imagenes/background.jpeg");
+  background-color: rgb(20, 123, 213);
   height: 100vh;
   width: 100%;
   text-align: center;
