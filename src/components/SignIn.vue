@@ -4,6 +4,7 @@
   <div class="background">
   <div class="container">
     <div class="welcome">
+    
       <img class="logoImg" src="../Imagenes/logo.png" alt="logo">
     <h3 class="header-title">Log In to ToDo App</h3>
     <p class="header-subtitle">Ready to create your task in ToDo App</p>
@@ -15,7 +16,6 @@
 <form @submit.prevent="signIn" class="form-sign-in">
       <div class="form">
         <div class="form-input">
-          <label class="input-field-label"></label>
           <input
             type="email"
             class="input-field"
@@ -25,9 +25,6 @@
           />
         </div>
         <div class="form-input" id="pass">
-          <label class="input-field-label">
-          </label>
-     
             <input
               :type="passwordVisible ? 'text' : 'password'"
               class="input-field input-password"
@@ -36,12 +33,12 @@
               required
               
             />
-            <span class="password" @click="togglePasswordVisibility('password')">
-              <i class="fa" :class="passwordVisible ? 'fa-eye-slash' : 'fa-eye'"></i>
-            </span>
+            <!--<div class="password" @click="togglePasswordVisibility('password')">-->
+              <!---<i class="fa" :class="passwordVisible ? 'fa-eye-slash' : 'fa-eye'"></i>--> 
+            <!--</div>-->
         </div>
-        <button class="button" type="submit">Sign In</button>
       </div>
+      <button class="button" type="submit">Sign In</button>
     </form>
 
     <p class="dontAccount">Dont have an account? 
@@ -77,6 +74,10 @@ const signIn = async () => {
     redirect.push("/");
   } catch (error) {
     errorMsg.value = `Error: ${error.message}`;
+    if (error.status==400){
+        alert("El correo electrónico o la contraseña son incorrectos. Vuelve a intentarlo");
+
+    }
     setTimeout(() => {
       errorMsg.value = null;
     }, 2500);
@@ -126,15 +127,6 @@ p {
   flex-direction: column;
   align-items: center;
 }
-.togglePasswordVisibility{
-  flex-wrap: wrap;
-  position: fixed;
-  top: 55%;
-  right: 700px; 
-  transform: translateY(-50%);
-  cursor: pointer;
-  z-index: 1; 
-}
 
 .header-title{
   color: gold;
@@ -153,8 +145,9 @@ p {
 }
 
 .logoImg{
+  
   border-radius: 15px;
-  margin-top: 10px;
+  margin-top: 60px;
   margin-bottom:20px ;
   height: 120px;
   width: 120px;
@@ -179,14 +172,16 @@ p {
 
 .input-field {
   width: 100%;
-  padding: 15px;
+  padding-top: 15px;
+  padding-bottom: 15px;
   border: 1px solid white;
   border-radius: 5px;
 }
 
 .button {
-  padding: 10px 30px;
-  background-color: gold;
+  padding-top: 15px;
+  padding-bottom: 15px;
+    background-color: gold;
   color: black;
   border: none;
   border-radius: 7px;
@@ -198,13 +193,18 @@ p {
 }
 
 #pass{
-  display:inline;
-  align-items: center;
-}
-.password{
   position: relative;
-  top:5%;
-  left:50px;
+}
+.input-password{
+    width:100%;
+  }
+
+.password{
+  position:absolute;
+  right: 20px;
+  top:50%;
+  transform:translateY(-50%);
+  cursor:pointer;
 }
 
 </style>

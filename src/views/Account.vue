@@ -1,6 +1,13 @@
 <template>
   
   <Barra />
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+  <br>
+
   <div class="container">
     <div class="profile">
   <h1>Name: {{username}}</h1>
@@ -96,8 +103,8 @@ img {
   height: 40vh;
   width: 100%;
   padding-top: 30vh;
-  background-attachment: fixed;
-  background-size: cover;
+  background-color: rgb(20, 123, 213);
+
   position: absolute;
   top: 0;
   text-align: center;
@@ -106,9 +113,19 @@ img {
 
 .container h1 {
   font-size: 20px;
+  color: white;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-family: Copperplate, Copperplate Gothic Light, fantasy;
 }
 
 .container h2 {
   font-size: 20px;
+  color: white;
+  text-align: center;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-family: Copperplate, Copperplate Gothic Light, fantasy;
 }
 </style>

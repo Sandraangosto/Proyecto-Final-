@@ -12,5 +12,7 @@
  p {
   background-color: rgb(20, 123, 213);
   color: gold;
+  justify-content: center;
+  margin-left: 320px;
  }
   </style>

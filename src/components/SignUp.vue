@@ -11,8 +11,6 @@
 
     <form @submit.prevent="signUp" class="form-sign-in">
       <div class="form">
-        <div class="form-input">
-          <label class="input-field-label">E-mail</label>
           <input
             type="email"
             class="input-field"
@@ -21,29 +19,22 @@
             v-model="email"
             required
           />
-        </div>
-        <div class="form-input">
-          <label class="input-field-label">Password</label>
           <input
             type="password"
             class="input-field"
-            placeholder="**********"
+            placeholder="Enter password"
             id="password"
             v-model="password"
             required
           />
-        </div>
-        <div class="form-input">
-          <label class="input-field-label">Confirm password</label>
           <input
             type="password"
             class="input-field"
-            placeholder="**********"
+            placeholder="Confirm Password"
             id="confirmPassword"
             v-model="confirmPassword"
             required
           />
-        </div>
         <button class="button" type="submit">Sign Up</button>
         <p>
           Have an account?
@@ -113,24 +104,38 @@ p {
   color: white;
   font-family: Copperplate, Copperplate Gothic Light, fantasy;
 }
-
+.form-input{
+  width: 100%;
+  padding: 15px;
+  border: 1px solid white;
+  border-radius: 5px;
+}
 .sign-up-link{
   color: white;
   font-family: Copperplate, Copperplate Gothic Light, fantasy;
 }
+
+.form-sign-in {
+   padding:30px 30px 30px 30px; 
+   width:70%;
+}
  .container{
-  height: 100vh;
   width: 100%;
   background-size: cover;
   background-image: url('../Imagenes/background.jpeg');
   background-repeat: no-repeat; 
   background-position: center;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
 }
 
 .header-title {
   color:gold;
   text-align: center;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   font-size: 45px;
   font-family: Copperplate, Copperplate Gothic Light, fantasy;
 }
@@ -138,24 +143,26 @@ p {
 .header-subtitle {
   color: white;
   text-align: center;
-  margin-bottom: 9px;
-  font-size: 20px;
+  margin-bottom: 10px;
+  font-size: 18px;
   font-family: Copperplate, Copperplate Gothic Light, fantasy;
 }
 
 .logo {
-  border-radius: 10px;
+  border-radius: 15px;
   margin-top: 60px;
-  margin-bottom:15px ;
-  height: 125px;
-  width: 125px;
+  margin-bottom:20px ;
+  height: 120px;
+  width: 120px;
+  opacity: 1;
 }
 
 .form-sign-in {
-  padding: 10px 10px 10px 10px;
+  padding: 40px 40px 40px 40px;
 }
 .form-input {
-  margin-bottom: 5px;
+  margin-bottom: 8px;
+  width: 80%;
 }
 .input-field-label {
   font-size: 15px;
@@ -164,18 +171,22 @@ p {
 }
 
 .input-field {
-  width: 100%;
-  padding: 10px;
-  border: 1px solid;
+  width: 80%;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: 1px solid white;
   border-radius: 5px;
+  margin-bottom:15px;
 }
 
 .button {
-  padding: 13px 18px;
-  background-color: gold;
+  padding-top: 15px;
+  padding-bottom: 15px;
+    background-color: gold;
   color: black;
   border: none;
-  border-radius: 5px;
+  border-radius: 7px;
+  cursor: pointer;
   width: 80%;
 }
 

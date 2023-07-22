@@ -1,26 +1,11 @@
 <template>
   <div class="wrapper">
     <Barra />
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
 
 
-    <div class="content"> 
-      <!--<h3>Your account:</h3>-->
-      <!--<router-link to="/account">Account</router-link>-->
-    </div>
-    <br>
-    <br>
-    <br>
+    
     <NewTask />
-   <!--x<h1>Tasks:</h1>-->
-   <br>
-   <br>
-   <br>
+  
    <div class="taskItem">
     <TaskItem v-for="task in tasks" :key="task.id" :task="task" />
     </div>
@@ -62,8 +47,9 @@ onMounted(async () => {
 <style scoped>
 *{
   background-color: rgb(20, 123, 213);
-
+  margin:0;
 }
+
 
 .taskItem{
   display: flex;
@@ -71,8 +57,10 @@ onMounted(async () => {
   flex-wrap: wrap;
   width: 100%;
   height: 250px;
+  margin-top:15px;
   
 }
+
 </style>
 
 <!-- 

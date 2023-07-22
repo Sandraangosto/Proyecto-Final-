@@ -105,6 +105,7 @@ export default {
 <style scoped>
 
 .addTask{
+  margin-bottom:55px;
   background-color: rgb(20, 123, 213);
   height: 100vh;
   width: 100%;

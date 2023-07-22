@@ -1,6 +1,14 @@
 <template>
     <Barra />
-    
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br>
+    <br> 
+    <div class="edit">
     <form class="edit-profile">
       
       <label for="name" class="input-field">Introduce tu nombre</label>
@@ -16,8 +24,9 @@
   
       
       <input @change="uploadAvatar" type="file" accept=".jpg, .jpeg, png, .gif"/>
-      <button @click.prevent="editProfile">Guardar cambios</button>
+      <button class="button" @click.prevent="editProfile">Guardar cambios</button>
     </form>
+  </div>
   </template>
 
 <script setup>
@@ -102,17 +111,36 @@ const uploadAvatar = async (evt) => {
 </script>
 
 <style scoped>
+
+.button {
+  padding: 10px 30px;
+  background-color: gold;
+  color: black;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  width: 80%;
+}
+
+.edit{
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  align-items: center;
+}
+.edit{
+  background-color: rgb(20, 123, 213);
+
+}
 .edit-profile {
   color: gold;
   display: flex;
   flex-direction: column;
-  background-image: url("../Imagenes/background.jpeg");
   height: 100vh;
   width: 100%;
   text-align: center;
-  position: relative;
-  background-repeat: no-repeat;
-  background-size: cover;
+  
 }
 
 .input-field {
