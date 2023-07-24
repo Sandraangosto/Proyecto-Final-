@@ -73,12 +73,14 @@ Markdownify is an [emailware](https://en.wiktionary.org/wiki/emailware). Meaning
 ## Roadmap
 
 
-3 julio
-- Crear BBDD Supabase y conectarla con el proyecto.
-- Subir el proyecto a Vercel.
-5 de julio
-- Modificar el componente SingIn con el HTML y el CSS necesarios para darle estilo.
-- Implementar la logica con JavaScript.
+Roadmap
+
+- 3 julio
+    - Crear BBDD Supabase y conectarla con el proyecto.
+    - Subir el proyecto a Vercel.
+- 5 de julio
+    - Modificar el componente SingIn con el HTML y el CSS necesarios para darle estilo.
+    - Implementar la logica con JavaScript.
 6 julio
 - Modificar el componente SingUp con el HTML y CSS necesarios para darle estilos. 
 - Implementar la logica con JavaScript. 
