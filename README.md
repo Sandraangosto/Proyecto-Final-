@@ -1,626 +1,247 @@
-# Size Limit [![Cult Of Martians][cult-img]][cult]
+# Color LS
 
-<img src="https://ai.github.io/size-limit/logo.svg" align="right"
-     alt="Size Limit logo by Anton Lovchikov" width="120" height="178">
+[![forthebadge](http://forthebadge.com/images/badges/made-with-ruby.svg)](http://forthebadge.com)
+[![forthebadge](http://forthebadge.com/images/badges/built-with-love.svg)](http://forthebadge.com)
 
-Size Limit is a performance budget tool for JavaScript. It checks every commit
-on CI, calculates the real cost of your JS for end-users and throws an error
-if the cost exceeds the limit.
+[![Gem Version](https://badge.fury.io/rb/colorls.svg)](https://badge.fury.io/rb/colorls)
+[![CI](https://github.com/athityakumar/colorls/actions/workflows/ruby.yml/badge.svg)](https://github.com/athityakumar/colorls/actions/workflows/ruby.yml)
+[![PRs Welcome](https://img.shields.io/badge/PRs-welcome-brightgreen.svg?style=shields)](http://makeapullrequest.com)
 
-* **ES modules** and **tree-shaking** support.
-* Add Size Limit to **Travis CI**, **Circle CI**, **GitHub Actions**
-  or another CI system to know if a pull request adds a massive dependency.
-* **Modular** to fit different use cases: big JS applications
-  that use their own bundler or small npm libraries with many files.
-* Can calculate **the time** it would take a browser
-  to download and **execute** your JS. Time is a much more accurate
-  and understandable metric compared to the size in bytes.
-* Calculations include **all dependencies and polyfills**
-  used in your JS..
+A Ruby script that colorizes the `ls` output with color and icons. Here are the screenshots of working example on an iTerm2 terminal (Mac OS), `oh-my-zsh` with `powerlevel9k` theme and `powerline nerd-font + awesome-config` font with the `Solarized Dark` color theme.
 
-<p align="center">
-  <img src="./img/example.png" alt="Size Limit CLI" width="738">
-</p>
+ ![image](https://user-images.githubusercontent.com/17109060/32149040-04f3125c-bd25-11e7-8003-66fd29bc18d4.png)
 
-With **[GitHub action]** Size Limit will post bundle size changes as a comment
-in pull request discussion.
+*If you're interested in knowing the powerlevel9k configuration to get this prompt, have a look at [this gist](https://gist.github.com/athityakumar/1bd5e9e24cd2a1891565573a893993eb).*
 
-<p align="center">
-<img src="https://raw.githubusercontent.com/andresz1/size-limit-action/master/assets/pr.png"
-  alt="Size Limit comment in pull request about bundle size changes"
-  width="686" height="289">
-</p>
+# Table of contents
 
-With `--why`, Size Limit can tell you *why* your library is of this size
-and show the real cost of all your internal dependencies.
-We are using [Statoscope] for this analysis.
+- [Usage](#usage)
+  - [Flags](#flags)
+    - `-1`
+    - `-a`   (or) `--all`
+    - `-A`   (or) `--almost-all`
+    - `-d`   (or) `--dirs`
+    - `-f`   (or) `--files`
+    - `-h`   (or) `--help`
+    - `-l`   (or) `--long`
+    - `-r`   (or) `--report`
+    - `--tree` (or) `--tree=[DEPTH]`
+    - `--gs` (or) `--git-status`
+    - `--sd` (or) `--sort-dirs` or `--group-directories-first`
+    - `--sf` (or) `--sort-files`
+    - `-t`
+  - [Combination of flags](#combination-of-flags)
+- [Installation](#installation)
+- [Recommended configurations](#recommended-configurations)
+- [Custom configurations](#custom-configurations)
+- [Updating](#updating)
+- [Uninstallation](#uninstallation)
+- [Contributing](#contributing)
+- [License](#license)
 
-<p align="center">
-  <img src="./img/why.png" alt="Statoscope example" width="650">
-</p>
+# Usage
 
-<p align="center">
-  <a href="https://evilmartians.com/?utm_source=size-limit">
-    <img src="https://evilmartians.com/badges/sponsored-by-evil-martians.svg"
-         alt="Sponsored by Evil Martians" width="236" height="54">
-  </a>
-</p>
+[(Back to top)](#table-of-contents)
 
-[GitHub action]: https://github.com/andresz1/size-limit-action
-[Statoscope]:    https://github.com/statoscope/statoscope
-[cult-img]:      http://cultofmartians.com/assets/badges/badge.svg
-[cult]:          http://cultofmartians.com/tasks/size-limit-config.html
+Man pages have been added. Checkout `man colorls`.
 
-## Who Uses Size Limit
+### Flags
 
-* [MobX](https://github.com/mobxjs/mobx)
-* [Material-UI](https://github.com/callemall/material-ui)
-* [Autoprefixer](https://github.com/postcss/autoprefixer)
-* [PostCSS](https://github.com/postcss/postcss) reduced
-  [25% of the size](https://github.com/postcss/postcss/commit/150edaa42f6d7ede73d8c72be9909f0a0f87a70f).
-* [Browserslist](https://github.com/browserslist/browserslist) reduced
-  [25% of the size](https://github.com/browserslist/browserslist/commit/640b62fa83a20897cae75298a9f2715642531623).
-* [EmojiMart](https://github.com/missive/emoji-mart) reduced
-  [20% of the size](https://github.com/missive/emoji-mart/pull/111)
-* [nanoid](https://github.com/ai/nanoid) reduced
-  [33% of the size](https://github.com/ai/nanoid/commit/036612e7d6cc5760313a8850a2751a5e95184eab).
-* [React Focus Lock](https://github.com/theKashey/react-focus-lock) reduced
-  [32% of the size](https://github.com/theKashey/react-focus-lock/pull/48).
-* [Logux](https://github.com/logux) reduced
-  [90% of the size](https://github.com/logux/logux-client/commit/62b258e20e1818b23ae39b9c4cd49e2495781e91).
+- With `-1` : Lists one entry per line
 
+  ![image](https://user-images.githubusercontent.com/17109060/32149062-4f0547ca-bd25-11e7-98b6-587467379704.png)
 
-## How It Works
+- With `-a` (or) `--all` : Does not ignore entries starting with '.'
 
-1. Size Limit contains a CLI tool, 3 plugins (`file`, `webpack`, `time`)
-   and 3 plugin presets for popular use cases (`app`, `big-lib`, `small-lib`).
-   A CLI tool finds plugins in `package.json` and loads the config.
-2. If you use the `webpack` plugin, Size Limit will bundle your JS files into
-   a single file. It is important to track dependencies and webpack polyfills.
-   It is also useful for small libraries with many small files and without
-   a bundler.
-3. The `webpack` plugin creates an empty webpack project, adds your library
-   and looks for the bundle size difference.
-4. The `time` plugin compares the current machine performance with that of
-   a low-priced Android devices to calculate the CPU throttling rate.
-5. Then the `time` plugin runs headless Chrome (or desktop Chrome if it’s
-   available) to track the time a browser takes to compile and execute your JS.
-   Note that these measurements depend on available resources and might
-   be unstable. [See here](https://github.com/mbalabash/estimo/issues/5)
-   for more details.
+  ![image](https://user-images.githubusercontent.com/17109060/32149045-182eb39e-bd25-11e7-83d4-897cb14bcff3.png)
 
+- With `-A` (or) `--almost-all` : Does not ignore entries starting with '.', except `./` and `../`
 
-## Usage
+  ![image](https://user-images.githubusercontent.com/17109060/32149046-1ef7664e-bd25-11e7-8bd9-bfc3c8b27b74.png)
 
-### JS Applications
+- With `-d` (or) `--dirs` : Shows only directories
 
-Suitable for applications that have their own bundler and send the JS bundle
-directly to a client (without publishing it to npm). Think of a user-facing app
-or website, like an email client, a CRM, a landing page or a blog with
-interactive elements, using React/Vue/Svelte lib or vanilla JS.
+  ![image](https://user-images.githubusercontent.com/17109060/32149066-5f842aa8-bd25-11e7-9bf0-23313b717182.png)
 
-<details><summary><b>Show instructions</b></summary>
+- With `-f` (or) `--files` : Shows only files
 
-1. Install the preset:
+  ![image](https://user-images.githubusercontent.com/17109060/32149065-5a27c9d4-bd25-11e7-9a2b-fd731d76a058.png)
 
-    ```sh
-    npm install --save-dev size-limit @size-limit/file
-    ```
+- With `-h` (or) `--help` : Prints a very helpful help menu
 
-2. Add the `size-limit` section and the `size` script to your `package.json`:
+  ![image](https://user-images.githubusercontent.com/17109060/32149096-cf2cf5b0-bd25-11e7-84b6-909d79099c98.png)
 
-    ```diff
-    + "size-limit": [
-    +   {
-    +     "path": "dist/app-*.js"
-    +   }
-    + ],
-      "scripts": {
-        "build": "webpack ./webpack.config.js",
-    +   "size": "npm run build && size-limit",
-        "test": "jest && eslint ."
-      }
-    ```
+- With `-l` (or) `--long` : Shows in long listing format
 
-3. Here’s how you can get the size for your current project:
+  ![image](https://user-images.githubusercontent.com/17109060/32149049-2a63ae48-bd25-11e7-943c-5ceed25bd693.png)
 
-    ```sh
-    $ npm run size
+- With `-r` (or) `--report` : Shows brief report about number of files and folders shown
 
-      Package size: 30.08 kB with all dependencies, minified and gzipped
-    ```
+  ![image](https://user-images.githubusercontent.com/17109060/32149082-96a83fec-bd25-11e7-9081-7f77e4c90e90.png)
 
-4. Now, let’s set the limit. Add 25% to the current total size and use that as
-   the limit in your `package.json`:
+- With `--tree` (or) `--tree=[DEPTH]` : Shows tree view of the directory with the specified depth (default 3)
 
-    ```diff
-      "size-limit": [
-        {
-    +     "limit": "35 kB",
-          "path": "dist/app-*.js"
-        }
-      ],
-    ```
+  ![image](https://user-images.githubusercontent.com/17109060/32149051-32e596e4-bd25-11e7-93a9-5e50c8d2bb19.png)
 
-5. Add the `size` script to your test suite:
+- With `--gs` (or) `--git-status` : Shows git status for each entry
 
-    ```diff
-      "scripts": {
-        "build": "webpack ./webpack.config.js",
-        "size": "npm run build && size-limit",
-    -   "test": "jest && eslint ."
-    +   "test": "jest && eslint . && npm run size"
-      }
-    ```
+  ![image](https://user-images.githubusercontent.com/17109060/32149075-7a1a1954-bd25-11e7-964e-1adb173aa2b9.png)
 
-6. If you don’t have a continuous integration service running, don’t forget
-   to add one — start with [Travis CI].
+- With `--sd` (or) `--sort-dirs` or `--group-directories-first` : Shows directories first, followed by files
 
-</details>
+  ![image](https://user-images.githubusercontent.com/17109060/32149068-65117fc0-bd25-11e7-8ada-0b055603e3fd.png)
 
+- With `--sf` (or) `--sort-files` : Shows files first, followed by directories
 
-### JS Application and Time-based Limit
+  ![image](https://user-images.githubusercontent.com/17109060/32149071-6b379de4-bd25-11e7-8764-a0c577e526a1.png)
 
-File size limit (in kB) is not the best way to describe your JS application
-cost for developers. Developers will compare the size of the JS bundle
-with the size of images. But browsers need much more time to parse 100 kB
-of JS than 100 kB of an image since JS compilers are very complex.
+- With `-t` : Sort by modification time, newest first (NEED TO ADD IMAGE)
 
-This is why Size Limit support time-based limit. It runs headless Chrome
-to track the time a browser takes to compile and execute your JS.
+- With color options : `--light` or `--dark` can be passed as a flag, to choose the appropriate color scheme. By default, the dark color scheme is chosen. In order to tweak any color, read [Custom configurations](#custom-configurations).
 
-<details><summary><b>Show instructions</b></summary>
+### Combination of flags
 
-1. Install the preset:
+- Using `--gs` with `-t` :
+
+  ![image](https://user-images.githubusercontent.com/17109060/32149076-8423c864-bd25-11e7-816e-8642643d2c27.png)
+
+- Using `--gs` with `-l` :
+
+  ![image](https://user-images.githubusercontent.com/17109060/32149078-899b0622-bd25-11e7-9810-d398eaa77e32.png)
+
+- Using `--sd` with `-l` and `-A` :
+
+  ![image](https://user-images.githubusercontent.com/17109060/32149084-9eb2a416-bd25-11e7-8fb7-a9d336c6e038.png)
+
+- Using `--non-human-readable` with `-l` :
+  - This will print the file sizes in bytes (non-human readable format)
+
+  ![image](https://user-images.githubusercontent.com/19269206/234581461-1e1fdd90-a362-4cea-ab82-5ca360746be8.png)
+
+# Installation
+
+[(Back to top)](#table-of-contents)
+
+1. Install Ruby (preferably, version >= 2.6)
+2. [Download](https://www.nerdfonts.com/font-downloads) and install a Nerd Font. Have a look at the [Nerd Font README](https://github.com/ryanoasis/nerd-fonts/blob/master/readme.md) for installation instructions.
+
+    *Note for `iTerm2` users - Please enable the Nerd Font at iTerm2 > Preferences > Profiles > Text > Non-ASCII font > Hack Regular Nerd Font Complete.*
+
+    *Note for `HyperJS` users - Please add `"Hack Nerd Font"` Font as an option to `fontFamily` in your `~/.hyper.js` file.*
+
+3. Install the [colorls](https://rubygems.org/gems/colorls/) ruby gem with `gem install colorls`
+
+    *Note for `rbenv` users - In case of load error when using `lc`, please try the below patch.*
 
     ```sh
-    npm install --save-dev size-limit @size-limit/preset-app
+    rbenv rehash
+    rehash
     ```
 
-2. Add the `size-limit` section and the `size` script to your `package.json`:
-
-    ```diff
-    + "size-limit": [
-    +   {
-    +     "path": "dist/app-*.js"
-    +   }
-    + ],
-      "scripts": {
-        "build": "webpack ./webpack.config.js",
-    +   "size": "npm run build && size-limit",
-        "test": "jest && eslint ."
-      }
+4. Enable tab completion for flags by entering following line to your shell configuration file (`~/.bashrc` or `~/.zshrc`) :
+    ```bash
+    source $(dirname $(gem which colorls))/tab_complete.sh
     ```
 
-3. Here’s how you can get the size for your current project:
+5. Start using `colorls` :tada:
+
+6. Have a look at [Recommended configurations](#recommended-configurations) and [Custom configurations](#custom-configurations).
+
+# Recommended configurations
+
+[(Back to top)](#table-of-contents)
+
+1. To add some short command (say, `lc`) with some flag options (say, `-l`, `-A`, `--sd`) by default, add this to your shell configuration file (`~/.bashrc`, `~/.zshrc`, etc.) :
+    ```sh
+    alias lc='colorls -lA --sd'
+    ```
+
+2. For changing the icon(s) to other unicode icons of choice (select icons from [here](https://nerdfonts.com/)), change the YAML files in a text editor of your choice (say, `subl`)
 
     ```sh
-    $ npm run size
-
-      Package size: 30.08 kB with all dependencies, minified and gzipped
-      Loading time: 602 ms   on slow 3G
-      Running time: 214 ms   on Snapdragon 410
-      Total time:   815 ms
+    subl $(dirname $(gem which colorls))/yaml
     ```
 
-4. Now, let’s set the limit. Add 25% to the current total time and use that as
-   the limit in your `package.json`:
+# Custom configurations
 
-    ```diff
-      "size-limit": [
-        {
-    +     "limit": "1 s",
-          "path": "dist/app-*.js"
-        }
-      ],
-    ```
+[(Back to top)](#table-of-contents)
 
-5. Add the `size` script to your test suite:
+You can overwrite the existing icons and colors mapping by copying the yaml files from `$(dirname $(gem which colorls))/yaml` into `~/.config/colorls`, and changing them.
 
-    ```diff
-      "scripts": {
-        "build": "webpack ./webpack.config.js",
-        "size": "npm run build && size-limit",
-    -   "test": "jest && eslint ."
-    +   "test": "jest && eslint . && npm run size"
-      }
-    ```
+- To overwrite color mapping :
 
-6. If you don’t have a continuous integration service running, don’t forget
-   to add one — start with [Travis CI].
+  Please have a look at the [list of supported color names](https://github.com/sickill/rainbow#color-list). You may also use a color hex code as long as it is quoted within the YAML file and prefaced with a `#` symbol.
 
-</details>
+  Let's say that you're using the dark color scheme and would like to change the color of untracked file (`??`) in the `--git-status` flag to yellow. Copy the defaut `dark_colors.yaml` and change it.
 
+  ```sh
+  cp $(dirname $(gem which colorls))/yaml/dark_colors.yaml ~/.config/colorls/dark_colors.yaml
+  ```
 
-### Big Libraries
+  In the `~/.config/colorls/dark_colors.yaml` file, change the color set for `untracked` from `darkorange` to `yellow`, and save the change.
 
-JS libraries > 10 kB in size.
+  ```
+  untracked: yellow
+  ```
 
-This preset includes headless Chrome, and will measure your lib’s execution
-time. You likely don’t need this overhead for a small 2 kB lib, but for larger
-ones the execution time is a more accurate and understandable metric that
-the size in bytes. Libraries like [React] are good examples for this preset.
+  Or, using hex color codes:
 
-<details><summary><b>Show instructions</b></summary>
+  ```
+  untracked: '#FFFF00'
+  ```
 
-1. Install preset:
+- To overwrite icon mapping :
 
-    ```sh
-    npm install --save-dev size-limit @size-limit/preset-big-lib
-    ```
+  Please have a look at the [list of supported icons](https://nerdfonts.com/). Let's say you want to add an icon for swift files. Copy the default `files.yaml` and change it.
 
-2. Add the `size-limit` section and the `size` script to your `package.json`:
+  ```sh
+  cp $(dirname $(gem which colorls))/yaml/files.yaml ~/.config/colorls/files.yaml`
+  ```
 
-    ```diff
-    + "size-limit": [
-    +   {
-    +     "path": "dist/react.production-*.js"
-    +   }
-    + ],
-      "scripts": {
-        "build": "webpack ./scripts/rollup/build.js",
-    +   "size": "npm run build && size-limit",
-        "test": "jest && eslint ."
-      }
-    ```
-
-3. If you use ES modules you can test the size after tree-shaking with `import`
-   option:
-
-    ```diff
-      "size-limit": [
-        {
-          "path": "dist/react.production-*.js",
-    +     "import": "{ createComponent }"
-        }
-      ],
-    ```
-
-4. Here’s how you can get the size for your current project:
-
-    ```sh
-    $ npm run size
-
-      Package size: 30.08 kB with all dependencies, minified and gzipped
-      Loading time: 602 ms   on slow 3G
-      Running time: 214 ms   on Snapdragon 410
-      Total time:   815 ms
-    ```
-
-5. Now, let’s set the limit. Add 25% to the current total time and use that
-   as the limit in your `package.json`:
-
-    ```diff
-      "size-limit": [
-        {
-    +     "limit": "1 s",
-          "path": "dist/react.production-*.js"
-        }
-      ],
-    ```
-
-6. Add a `size` script to your test suite:
-
-    ```diff
-      "scripts": {
-        "build": "rollup ./scripts/rollup/build.js",
-        "size": "npm run build && size-limit",
-    -   "test": "jest && eslint ."
-    +   "test": "jest && eslint . && npm run size"
-      }
-    ```
-
-7. If you don’t have a continuous integration service running, don’t forget
-   to add one — start with [Travis CI].
-8. Add the library size to docs, it will help users to choose your project:
-
-    ```diff
-      # Project Name
-
-      Short project description
-
-      * **Fast.** 10% faster than competitor.
-    + * **Small.** 15 kB (minified and gzipped).
-    +   [Size Limit](https://github.com/ai/size-limit) controls the size.
-    ```
-
-</details>
+  In the `~/.config/colorls/files.yaml` file, add a new icon / change an existing icon, and save the change.
 
 
-### Small Libraries
+  ```
+  swift: "\uF179"
+  ```
 
-JS libraries < 10 kB in size.
+- User contributed alias configurations :
 
-This preset will only measure the size, without the execution time, so it’s
-suitable for small libraries. If your library is larger, you likely want
-the Big Libraries preset above. [Nano ID] or [Storeon] are good examples
-for this preset.
-
-<details><summary><b>Show instructions</b></summary>
-
-1. First, install `size-limit`:
-
-    ```sh
-    npm install --save-dev size-limit @size-limit/preset-small-lib
-    ```
-
-2. Add the `size-limit` section and the `size` script to your `package.json`:
-
-    ```diff
-    + "size-limit": [
-    +   {
-    +     "path": "index.js"
-    +   }
-    + ],
-      "scripts": {
-    +   "size": "size-limit",
-        "test": "jest && eslint ."
-      }
-    ```
-
-3. Here’s how you can get the size for your current project:
-
-    ```sh
-    $ npm run size
-
-      Package size: 177 B with all dependencies, minified and gzipped
-    ```
-
-4. If your project size starts to look bloated, run `--why` for analysis:
-
-    ```sh
-    npm run size -- --why
-    ```
-
-    > We use [Statoscope](https://github.com/statoscope/statoscope) as bundle analyzer.
-
-5. Now, let’s set the limit. Determine the current size of your library,
-   add just a little bit (a kilobyte, maybe) and use that as the limit
-   in your `package.json`:
-
-    ```diff
-     "size-limit": [
-        {
-    +     "limit": "9 kB",
-          "path": "index.js"
-        }
-     ],
-    ```
-
-6. Add the `size` script to your test suite:
-
-    ```diff
-      "scripts": {
-        "size": "size-limit",
-    -   "test": "jest && eslint ."
-    +   "test": "jest && eslint . && npm run size"
-      }
-    ```
-
-7. If you don’t have a continuous integration service running, don’t forget
-   to add one — start with [Travis CI].
-8. Add the library size to docs, it will help users to choose your project:
-
-    ```diff
-      # Project Name
-
-      Short project description
-
-      * **Fast.** 10% faster than competitor.
-    + * **Small.** 500 bytes (minified and gzipped). No dependencies.
-    +   [Size Limit](https://github.com/ai/size-limit) controls the size.
-    ```
-
-</details>
+  - [@rjhilgefort](https://gist.github.com/rjhilgefort/51ea47dd91bcd90cd6d9b3b199188c16)
 
 
-[Travis CI]: https://github.com/dwyl/learn-travis
-[Storeon]: https://github.com/ai/storeon/
-[Nano ID]: https://github.com/ai/nanoid/
-[React]: https://github.com/facebook/react/
+# Updating
 
+[(Back to top)](#table-of-contents)
 
-## Reports
+Want to update to the latest version of `colorls`?
 
-Size Limit has a [GitHub action] that comments and rejects pull requests based
-on Size Limit output.
-
-1. Install and configure Size Limit as shown above.
-2. Add the following action inside `.github/workflows/size-limit.yml`
-
-```yaml
-name: "size"
-on:
-  pull_request:
-    branches:
-      - master
-jobs:
-  size:
-    runs-on: ubuntu-latest
-    env:
-      CI_JOB_NUMBER: 1
-    steps:
-      - uses: actions/checkout@v1
-      - uses: andresz1/size-limit-action@v1
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
+```sh
+gem update colorls
 ```
 
+# Uninstallation
 
-## Config
+[(Back to top)](#table-of-contents)
 
-### Plugins and Presets
+Want to uninstall and revert back to the old style? No issues (sob). Please feel free to open an issue regarding how we can enhance `colorls`.
 
-Plugins or plugin presets will be loaded automatically from `package.json`.
-For example, if you want to use `@size-limit/webpack`, you can just use
-`npm install --save-dev @size-limit/webpack`, or you can use our preset
-`@size-limit/preset-big-lib`.
-
-Plugins:
-
-* `@size-limit/file` checks the size of files with Gzip, Brotli
-  or without compression.
-* `@size-limit/webpack` adds your library to empty webpack project
-  and prepares bundle file for `file` plugin.
-* `@size-limit/webpack-why` adds reports for `webpack` plugin
-  about your library is of this size to show the cost of all your
-  dependencies.
-* `@size-limit/webpack-css` adds css support for `webpack` plugin.
-* `@size-limit/esbuild` is like `webpack` plugin, but uses `esbuild`
-  to be faster and use less space in `node_modules`.
-* `@size-limit/esbuild-why` add reports for `esbuild` plugin
-  about your library is of this size to show the cost of all your
-  dependencies.
-* `@size-limit/time` uses headless Chrome to track time to execute JS.
-* `@size-limit/dual-publish` compiles files to ES modules with [`dual-publish`]
-  to check size after tree-shaking.
-
-Plugin presets:
-
-* `@size-limit/preset-app` contains `file` and `time` plugins.
-* `@size-limit/preset-big-lib` contains `webpack`, `file`, and `time` plugins.
-* `@size-limit/preset-small-lib` contains `esbuild` and `file` plugins.
-
-[`dual-publish`]: https://github.com/ai/dual-publish
-
-
-#### Third-Party Plugins
-
-Third-party plugins and presets named starting with `size-limit-` are also supported.
-For example:
-
-* [`size-limit-node-esbuild`](https://github.com/un-ts/size-limit/tree/main/packages/node-esbuild)
-  is like `@size-limit/esbuild` but for Node libraries.
-* [`size-limit-preset-node-lib`](https://github.com/un-ts/size-limit/tree/main/packages/preset-node-lib)
-  is like `@size-limit/preset-small-lib` but for Node libraries which contains
-  above `node-esbuild` and core `file` plugins.
-* [`nx-size-limit`](https://github.com/LironHazan/nx-size-limit)
-  is an [NX](https://nx.dev/community) build system community plugin.
-
-
-### Limits Config
-
-Size Limits supports three ways to define limits config.
-
-1. `size-limit` section in `package.json`:
-
-   ```json
-     "size-limit": [
-       {
-         "path": "index.js",
-         "import": "{ createStore }",
-         "limit": "500 ms"
-       }
-     ]
-   ```
-
-2. or a separate `.size-limit.json` config file:
-
-   ```js
-   [
-     {
-       "path": "index.js",
-       "import": "{ createStore }",
-       "limit": "500 ms"
-     }
-   ]
-   ```
-
-3. or a more flexible `.size-limit.js` or `.size-limit.cjs` config file:
-
-   ```js
-   module.exports = [
-     {
-       path: "index.js",
-       import: "{ createStore }",
-       limit: "500 ms"
-     }
-   ]
-   ```
-
-Each section in the config can have these options:
-
-* **path**: relative paths to files. The only mandatory option.
-  It could be a path `"index.js"`, a [pattern] `"dist/app-*.js"`
-  or an array `["index.js", "dist/app-*.js", "!dist/app-exclude.js"]`.
-* **import**: partial import to test tree-shaking. It could be `"{ lib }"`
-  to test `import { lib } from 'lib'`, `*` to test all exports,
-  or `{ "a.js": "{ a }", "b.js": "{ b }" }` to test multiple files.
-* **limit**: size or time limit for files from the `path` option. It should be
-  a string with a number and unit, separated by a space.
-  Format: `100 B`, `10 kB`, `500 ms`, `1 s`.
-* **name**: the name of the current section. It will only be useful
-  if you have multiple sections.
-* **entry**: when using a custom webpack config, a webpack entry could be given.
-  It could be a string or an array of strings.
-  By default, the total size of all entry points will be checked.
-* **webpack**: with `false` it will disable webpack.
-* **running**: with `false` it will disable calculating running time.
-* **gzip**: with `false` it will disable gzip compression.
-* **brotli**: with `true` it will use brotli compression and disable
-  gzip compression.
-* **config**: a path to a custom webpack config.
-* **ignore**: an array of files and dependencies to exclude from
-  the project size calculation.
-* **modifyWebpackConfig**: (.size-limit.js only) function that can be used
-  to do last-minute changes to the webpack config, like adding a plugin.
-* **compareWith**: path to `stats.json` from another build to compare
-  (when `--why` is using).
-* **uiReports**: custom UI reports list (see [Statoscope docs]).
-
-If you use Size Limit to track the size of CSS files, make sure to set
-`webpack: false`. Otherwise, you will get wrong numbers, because webpack
-inserts `style-loader` runtime (≈2 kB) into the bundle.
-
-[Statoscope docs]: https://github.com/statoscope/statoscope/tree/master/packages/webpack-plugin#optionsreports-report
-[pattern]: https://github.com/sindresorhus/globby#globbing-patterns
-
-## Analyze with `--why`
-
-You can run `size-limit --why` to analyze the bundle.
-
-You will need to install `@size-limit/esbuild-why` or `@size-limit/webpack-why`
-depends on which bundler you are using (default is `esbuild`).
-
-For `@size-limit/esbuild-why`,
-it will generate a `esbuild-why.html` at the current directory & open it in the browser.
-
-If you also specify `--save-bundle <DIR>`,
-the report will be generated inside `<DIR>`.
-
-If you have multiple sections in your config,
-the files will be named `esbuild-why-{n}.html`,
-or you can give it a custom name:
-
-```jsonc
-[
-  {
-    "name": "cjs",
-    /* snap */
-  },
-  {
-    "name": "esm",
-    /* snap */
-  }
-]
+```sh
+gem uninstall colorls
 ```
 
-This will produce `esbuild-why-cjs.html` and `esbuild-why-esm.html` respectively.
+# Contributing
 
-For `@size-limit/webpack-why`,
-it will generate the report and open it in the browser automatically.
+[(Back to top)](#table-of-contents)
 
-## JS API
+Your contributions are always welcome! Please have a look at the [contribution guidelines](CONTRIBUTING.md) first. :tada:
 
-```js
-const sizeLimit = require('size-limit')
-const filePlugin = require('@size-limit/file')
-const webpackPlugin = require('@size-limit/webpack')
+# License
 
-sizeLimit([filePlugin, webpackPlugin], [filePath]).then(result => {
-  result //=> { size: 12480 }
-})
-```
+[(Back to top)](#table-of-contents)
+
+
+The MIT License (MIT) 2017 - [Athitya Kumar](https://github.com/athityakumar/). Please have a look at the [LICENSE.md](LICENSE.md) for more details.
 
 
 
