@@ -32,7 +32,7 @@
   <a href="#license">License</a>
 </p>
 
-![screenshot]("./src/Imagenes/captura.png")
+![screenshot] <img src="./src/Imagenes/captura.png" alt="screenshot" width="600">
 
 ## Introducción
 
@@ -81,35 +81,35 @@ Roadmap
 - 5 de julio
     - Modificar el componente SingIn con el HTML y el CSS necesarios para darle estilo.
     - Implementar la logica con JavaScript.
-6 julio
-- Modificar el componente SingUp con el HTML y CSS necesarios para darle estilos. 
-- Implementar la logica con JavaScript. 
-7 de julio
-- Cambiar el componente NavBar por Barra.vue y crear la barra de navegación para nuestro Home.
-- Darle estilos con CSS y la lógica con JavaScript para que muestre el nombre de usuario y el botón de LogOut.
-11 de julio
-- Crear el componente Footer y darle estilos con CSS.
-- Añadir en el Home.vue los componentes creados.
-12 de julio
-- Modificar el componente Account para poder modificar cualquier dato que queramos añadir en nuestro usuario. 
-13 de julio
-- Crear el View EditProfile y darle estilos con CSS
-- Implementar la lógica necesaria para su funcionamiento con JavaScript.
-14 de julio
-- Modificar el componente NewTask  y TaskItem para que podamos añadir nuestras tareas y poder gestionarlas.
-- Añadir la lógica con JavaScript para poder ver las tareas creadas y las funcionalidades para editar y eliminar tareas y refrescar la pagina. 
-17 de julio
-- Acabar de ajustar los estilos y funcionalidades de nuestro Home. 
-18 de julio
-- Acabar de ajustar los estilos y funcionalidades del SingIn y SingUp.
-19 de julio
-- Acabar de ajustar estilos y funcionalidades del NewTask y TaskItem.
-22 de julio
-- Acabar de ajustar estilos y funcionalidades de Account y EditProfile.
-24 de julio
-- Acabar de completar el README
+- 6 julio
+    - Modificar el componente SingUp con el HTML y CSS necesarios para darle estilos. 
+    - Implementar la logica con JavaScript. 
+- 7 de julio
+    - Cambiar el componente NavBar por Barra.vue y crear la barra de navegación para nuestro Home.
+    - Darle estilos con CSS y la lógica con JavaScript para que muestre el nombre de usuario y el botón de LogOut.
+- 11 de julio
+    - Crear el componente Footer y darle estilos con CSS.
+    - Añadir en el Home.vue los componentes creados.
+- 12 de julio
+    - Modificar el componente Account para poder modificar cualquier dato que queramos añadir en nuestro usuario. 
+- 13 de julio
+    - Crear el View EditProfile y darle estilos con CSS
+    - Implementar la lógica necesaria para su funcionamiento con JavaScript.
+- 14 de julio
+    - Modificar el componente NewTask  y TaskItem para que podamos añadir nuestras tareas y poder gestionarlas.
+    - Añadir la lógica con JavaScript para poder ver las tareas creadas y las funcionalidades para editar y eliminar tareas y refrescar la pagina. 
+- 17 de julio
+    - Acabar de ajustar los estilos y funcionalidades de nuestro Home. 
+- 18 de julio
+    - Acabar de ajustar los estilos y funcionalidades del SingIn y SingUp.
+- 19 de julio
+    - Acabar de ajustar estilos y funcionalidades del NewTask y TaskItem.
+- 22 de julio
+    - Acabar de ajustar estilos y funcionalidades de Account y EditProfile.
+-   24 de julio
+    - Acabar de completar el README
 25 y 26 de julio
-- Crear presentación del Proyecto.
+    - Crear presentación del Proyecto.
 
 	
 
