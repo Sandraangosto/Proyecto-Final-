@@ -16,7 +16,7 @@ if the cost exceeds the limit.
   to download and **execute** your JS. Time is a much more accurate
   and understandable metric compared to the size in bytes.
 * Calculations include **all dependencies and polyfills**
-  used in your JS.
+  used in your JS..
 
 <p align="center">
   <img src="./img/example.png" alt="Size Limit CLI" width="738">
