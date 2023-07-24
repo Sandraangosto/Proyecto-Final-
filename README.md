@@ -25,14 +25,14 @@
 
 <p align="center">
   <a href="#Introduccion">Introducción</a> •
- <!-- <a href="#how-to-use">How To Use</a> • -->
-  <!--<a href="#download">Download</a> •-->
-  <a href="#credits">Credits</a> •
-  <a href="#related">Related</a> •
-  <a href="#license">License</a>
+  <a href="#Roadmap">Roadmap</a> • 
+  <a href="#Construido-con">Construido con </a> •
+  <a href="#Desafio-tecnico">Desafío Técnicos</a> •
+  <a href="#Agradecimientos">Agradecimientos </a> •
+  <a href="#Acerca-de-mi">Acerca de Mi</a>
 </p>
 
-![screenshot] <img src="./src/Imagenes/captura.png" alt="screenshot" width="600">
+<img src="./src/Imagenes/captura.png" alt="screenshot" width="800">
 
 ## Introducción
 
@@ -113,34 +113,35 @@ Roadmap
 
 	
 
-## Related
+## Construido con 
 
-[markdownify-web](https://github.com/amitmerchant1990/markdownify-web) - Web version of Markdownify
+Para poder crear este proyecto, hemos utilizado Supabase para la creacion de nuestra BBDD.
+Hermos creado el proyecto en Vue, y hemos añadido JavaScript para darle lógica a nuestro proyecto, HTML5 y CSS para darle forma y estilos a nuestra página. 
+Hemos utilizado Vercel para poder tener nuestra página alojada.
+Y para terminar hemos utilizado Canva para crear la presentación. 
 
-## Support
+## Desafío Técnico
 
-<a href="https://www.buymeacoffee.com/5Zn8Xh3l9" target="_blank"><img src="https://www.buymeacoffee.com/assets/img/custom_images/purple_img.png" alt="Buy Me A Coffee" style="height: 41px !important;width: 174px !important;box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;-webkit-box-shadow: 0px 3px 2px 0px rgba(190, 190, 190, 0.5) !important;" ></a>
+El desafío técnico en este proyecto ha sido poder dominar Vue y todos los componentes. Aún me siento un poco perdida en el uso de este sistema pero poco a poco lo hemos podido sacar adelante.
 
-<p>Or</p> 
 
-<a href="https://www.patreon.com/amitmerchant">
-	<img src="https://c5.patreon.com/external/logo/become_a_patron_button@2x.png" width="160">
-</a>
 
-## You may also like...
 
-- [Pomolectron](https://github.com/amitmerchant1990/pomolectron) - A pomodoro app
-- [Correo](https://github.com/amitmerchant1990/correo) - A menubar/taskbar Gmail App for Windows and macOS
+## Agradecimientos
 
-## License
+Primero agradecer a Ironhack la oportunidad de aprender un mundo completamente nuevo para mí y poder aprender y desafiarme en este proyecto.
+Agredecer a nuestro Profesor Diego Zito por las clases y guiarnos en este mundo de la programación.
+Y por ultimo agradecer a Amazon la oportunidad de poder desarrollar nuestros caminos y aprender de la mano de los mejores.
 
-MIT
+## Acerca de Mi
 
----
+Mi nombre es Sanra Angosto tengo 28 años y es la primera vez que estoy desarollando una página web con Vue. 
 
-> [amitmerchant.com](https://www.amitmerchant.com) &nbsp;&middot;&nbsp;
-> GitHub [@amitmerchant1990](https://github.com/amitmerchant1990) &nbsp;&middot;&nbsp;
-> Twitter [@amit_merchant](https://twitter.com/amit_merchant)
+sandra_angosto@hotmail.es
+
+Project Link Github: [https://github.com/Sandraangosto/Proyecto-Final-](https://github.com/Sandraangosto/Proyecto-Final-)
+
+Project Link Vercel: [https://proyecto-final-two-delta.vercel.app/auth/login](https://proyecto-final-two-delta.vercel.app/auth/login)
 
 
 <!--https://readme.so/
