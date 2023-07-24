@@ -1,9 +1,9 @@
 
 <h1 align="center">
   <br>
-  <a href="https://proyecto-final-two-delta.vercel.app/auth/login"><img src="./src/Imagenes/logo.png" alt="TO-DOO-APP" width="200"></a>
+  <a href="https://proyecto-final-two-delta.vercel.app/auth/login"><img src="./src/Imagenes/logo.png" alt="TO-DO-APP" width="200"></a>
   <br>
-  TO DOO APP
+  TODO APP
   <br>
 </h1>
 
@@ -36,7 +36,7 @@
 
 ## Introducción
 
-Con To Doo App hemos creado un gestor de tareas dónde el usuario puede crear, editar, eliminar y gestionar las tareas.
+Con ToDo App hemos creado un gestor de tareas dónde el usuario puede crear, editar, eliminar y gestionar las tareas.
 
 <!--## How To Use
 
