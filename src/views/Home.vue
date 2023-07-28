@@ -3,7 +3,6 @@
     <Barra />
 
 
-    
     <NewTask />
   
    <div class="taskItem">
@@ -46,18 +45,24 @@ onMounted(async () => {
 
 <style scoped>
 *{
-  background-color: rgb(20, 123, 213);
+  /*background-color: rgb(20, 123, 213);*/
   margin:0;
 }
 
+.wrapper{
+  background-image: url("../Imagenes/background.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
 
+}
 .taskItem{
   display: flex;
+  justify-content: center;
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;
-  height: 250px;
   margin-top:15px;
+
   
 }
 

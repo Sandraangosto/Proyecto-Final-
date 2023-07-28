@@ -1,32 +1,25 @@
 <template>
     <Barra />
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br>
-    <br> 
     <div class="edit">
     <form class="edit-profile">
       
       <label for="name" class="input-field">Introduce tu nombre</label>
-      <input type="text" autocomplete="off" name="name" v-model="name" placeholder="Your Name"/>
+      <input class="input" type="text" autocomplete="off" name="name" v-model="name" placeholder="Your Name"/>
   
      
       <label for="username" class="input-field">Introduce tu Nombre de Usuario</label>
-      <input type="text" autocomplete="off" name="username" v-model="username" placeholder="Your UserName"/>
+      <input class="input" type="text" autocomplete="off" name="username" v-model="username" placeholder="Your UserName"/>
   
       
       <label for="website" class="input-field">Tu sitio web:</label>
-      <input type="text" autocomplete="off" name="website" v-model="website" placeholder="Your WebSite"/>
+      <input class="input" type="text" autocomplete="off" name="website" v-model="website" placeholder="Your WebSite"/>
   
       
       <input @change="uploadAvatar" type="file" accept=".jpg, .jpeg, png, .gif"/>
       <button class="button" @click.prevent="editProfile">Guardar cambios</button>
     </form>
   </div>
+  <Footer />
   </template>
 
 <script setup>
@@ -113,41 +106,64 @@ const uploadAvatar = async (evt) => {
 <style scoped>
 
 .button {
-  padding: 10px 30px;
+  padding: 10px 0px;
   background-color: gold;
   color: black;
   border: none;
   border-radius: 7px;
   cursor: pointer;
-  width: 80%;
+  margin-top: 10px;
 }
 
 .edit{
   width: 100%;
+  background-image: url("../Imagenes/background.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
+  padding-top:30vh;
   display: flex;
   justify-content: center;
   flex-direction: column;
   align-items: center;
 }
-.edit{
-  background-color: rgb(20, 123, 213);
 
-}
 .edit-profile {
   color: gold;
   display: flex;
   flex-direction: column;
   height: 100vh;
-  width: 100%;
+  width: 50%;
   text-align: center;
+  font-size: 20px;
   
 }
 
 .input-field {
-  width: 100%;
-  padding: 15px;
+  
+  padding-top: 15px;
+  padding-bottom: 15px;
   border: 1px solid white;
   border-radius: 5px;
+  margin-bottom:15px;
 }
 
+.input {
+  padding-top: 15px;
+  padding-bottom: 15px;
+  border: 1px solid white;
+  border-radius: 5px;
+  margin-bottom:15px;
+}
+ @media screen {
+    .input-field{
+      border: none;
+    }
+    .button {
+     background-color: gold;
+     color: black;
+     border: none;
+     border-radius: 7px;
+     cursor: pointer;
+}
+ }
 </style>

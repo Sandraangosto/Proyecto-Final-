@@ -35,7 +35,7 @@ export const useUserStore = defineStore("user", {
 
         const { data: profile } = await supabase.from('profiles').insert([
           {
-            id: this.user.id,
+            user_id: this.user.id,
             email: email,
           }
         ])

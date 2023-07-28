@@ -9,7 +9,6 @@
 
     <router-link to="/account" class="linkBarra">Your Account</router-link>
 
-    <router-link to="/" class="linkBarra">Your Tasks</router-link>
 
 
     <div class="">

@@ -1,12 +1,7 @@
 <template>
   
   <Barra />
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
-  <br>
+  
 
   <div class="container">
     <div class="profile">
@@ -87,24 +82,29 @@ img {
 }
 
 .avatarProfile {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-  margin-bottom: 6vh;
+  padding-top: 15px;
+  padding-bottom: 15px;
+  background-color: gold;
+  color: black;
+  border: none;
+  border-radius: 7px;
+  cursor: pointer;
+  width: 25%;
 }
 
+
 .container {
+
   display: flex;
   flex-direction: column;
   justify-content: center;
   align-items: center;
   gap: 4vw;
-  height: 40vh;
   width: 100%;
   padding-top: 30vh;
-  background-color: rgb(20, 123, 213);
-
+  background-image: url("../Imagenes/background.jpeg");
+  background-size: cover;
+  background-repeat: no-repeat;
   position: absolute;
   top: 0;
   text-align: center;

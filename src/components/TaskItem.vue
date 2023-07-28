@@ -147,8 +147,11 @@ const toggleComplete = () => {
 <style scoped>
 
 .task-item-fondo{
-  background-color: rgb(20, 123, 213);
+  /*background-color: rgb(20, 123, 213);*/
+  background-color: transparent;
   width: 25%;
+  padding-left:5px;
+  padding-bottom: 5px;
 
 }
 .taskComplete {
@@ -222,6 +225,8 @@ const toggleComplete = () => {
   background-color: white;
   text-align: center;
   justify-content: space-between;
+  border-radius: 5px;
+
 }
 </style>
 

@@ -3,7 +3,7 @@
         <h1 class="titulo">Add a new Task</h1>
         <p class="subtitulo">Keep Your Tasks Here! </p>
         <div>
-            <p><strong class="date">Today is {{ formattDate }}</strong></p>
+            <p><strong class="date">Today is {{ dayOfWeek }} ({{ dayOfMonth }} of {{ month }}).</strong></p>
         </div>
     <div v-if="showErrorMessage">
         <p class="error-text">{{ errorMessage }}</p>
@@ -87,6 +87,56 @@ onMounted(() => {
   formattedDate.value = formatter.format(currentDate.value);
 });
 
+
+function getDayOfWeek() {
+  const daysOfWeek = [
+    "Sunday",
+    "Monday",
+    "Tuesday",
+    "Wednesday",
+    "Thursday",
+    "Friday",
+    "Saturday"
+  ];
+
+  const today = new Date();
+  const dayIndex = today.getDay();
+
+  return daysOfWeek[dayIndex];
+}
+
+
+function getDayOfMonth() {
+  const today = new Date();
+  return today.getDate();
+}
+
+function getMonth() {
+  const months = [
+    "January",
+    "February",
+    "Marcj",
+    "April",
+    "May",
+    "June",
+    "July",
+    "August",
+    "September",
+    "October",
+    "November",
+    "December"
+  ];
+
+  const today = new Date();
+  const monthIndex = today.getMonth();
+
+  return months[monthIndex];
+}
+
+const dayOfWeek = getDayOfWeek();
+const dayOfMonth = getDayOfMonth();
+const month = getMonth();
+
 </script>
 
 <script>
@@ -99,20 +149,25 @@ export default {
       });
     }
   }
-}
+};
+
+
 
 </script>
 <style scoped>
 
 .addTask{
+  padding-top: 30vh;
   margin-bottom:15px;
-  background-color: rgb(20, 123, 213);
+  /*background-color: rgb(20, 123, 213);*/
+  background-color: transparent;
   height: 100vh;
   width: 100%;
   text-align: center;
   position: relative;
   background-repeat: no-repeat;
   background-size: cover;
+  /*background-image: url("../Imagenes/background.jpeg");*/
 }
 
 

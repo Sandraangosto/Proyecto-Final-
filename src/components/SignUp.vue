@@ -77,23 +77,33 @@ const redirect = useRouter();
 
 // Arrow function to SignUp user to supaBase with a timeOut() method for showing the error
 const signUp = async () => {
-  if (password.value === confirmPassword.value) {
-    try {
-      // calls the user store and send the users info to backend to logIn
-      await useUserStore().signUp(email.value, password.value);
-      // redirects user to the homeView
-      redirect.push({ path: "/auth/login" });
-    } catch (error) {
-      // displays error message
-      errorMsg.value = error.message;
-      // hides error message
-      setTimeout(() => {
-        errorMsg.value = null;
-      }, 5000);
+  if((password.value).length>=6){
+    if (password.value === confirmPassword.value) {
+      try {
+        // calls the user store and send the users info to backend to logIn
+        await useUserStore().signUp(email.value, password.value);
+        alert( "Revisa tu correo electrónico para validar tu cuenta.");
+        // redirects user to the homeView
+        redirect.push({ path: "/auth/login" });
+      } catch (error) {
+        // displays error message
+        errorMsg.value = error.message;
+      
+        // hides error message
+        setTimeout(() => {
+          errorMsg.value = null;
+        }, 5000);
+      }
+      return;
+    }else {
+      errorMsg.value = "Los datos introducidos, no son corretos.";
+      alert( errorMsg.value);
+      
     }
-    return;
+  }else{
+    alert( "La contraseña es demasiado corta, debe tener 6 o más carácteres.");
   }
-  errorMsg.value = "Los datos introducidos, no son corretos.";
+  
 };
 </script>
 
@@ -151,7 +161,7 @@ p {
 .logo {
   border-radius: 15px;
   margin-top: 60px;
-  margin-bottom:20px ;
+  margin-bottom:20px; 
   height: 120px;
   width: 120px;
   opacity: 1;
@@ -182,7 +192,7 @@ p {
 .button {
   padding-top: 15px;
   padding-bottom: 15px;
-    background-color: gold;
+  background-color: gold;
   color: black;
   border: none;
   border-radius: 7px;
