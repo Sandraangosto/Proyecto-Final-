@@ -16,10 +16,11 @@
   
       
       <input @change="uploadAvatar" type="file" accept=".jpg, .jpeg, png, .gif"/>
-      <button class="button" @click.prevent="editProfile">Guardar cambios</button>
+      <button class="button" @click.prevent="editProfiles">Guardar cambios</button>
     </form>
+    <Footer />
+
   </div>
-  <Footer />
   </template>
 
 <script setup>
@@ -28,6 +29,8 @@ import { onMounted, ref, toRefs } from "vue";
 import { useUserStore } from "../stores/user";
 import Barra from "../components/Barra.vue";
 import { useRouter } from "vue-router";
+import Footer from "../components/Footer.vue";
+
 
 const userStore = useUserStore();
 
@@ -43,13 +46,13 @@ onMounted(() => {
 
 async function getProfile() {
   await userStore.fetchUser();
-  username.value = userStore.profile.username;
-  avatar_url.value = userStore.profile.avatar_url;
-  website.value = userStore.profile.website;
-  name.value = userStore.profile.name;
+  username.value = userStore.profile.username==undefined ? "" : userStore.profile.username;
+  avatar_url.value = userStore.profile.avatar_url==undefined ? "" : userStore.profile.avatar_url;
+  website.value = userStore.profile.website==undefined ? "" : userStore.profile.website;
+  name.value = userStore.profile.full_name==undefined ? "" : userStore.profile.full_name;
 }
 
-async function editProfile() {
+async function editProfiles() {
   if (
     website.value.length === 0 ||
     username.value.length === 0 ||
@@ -61,8 +64,8 @@ async function editProfile() {
     await userStore.editProfile(
       username.value,
       website.value,
-      avatar_url.value,
-      name.value
+      name.value,
+      avatar_url.value
     );
     redirect.push({ path: "/account" });
   }
@@ -89,8 +92,10 @@ const uploadAvatar = async (evt) => {
     let { error: uploadError } = await supabase.storage
       .from("avatars")
       .upload(filePath, file, { upsert: false });
+
+
     avatar_url.value =
-      "https://hzfkzntspuuexihwuuyx.supabase.co" +
+      "https://znfqtvlnlyjlzfoyeloj.supabase.co/storage/v1/object/public/avatars/" +
       filePath;
     if (uploadError) throw uploadError;
     emit("update:path", filePath);
@@ -116,13 +121,14 @@ const uploadAvatar = async (evt) => {
 }
 
 .edit{
+  height:70vh;
   width: 100%;
   background-image: url("../Imagenes/background.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
   padding-top:30vh;
   display: flex;
-  justify-content: center;
+  justify-content: space-between;
   flex-direction: column;
   align-items: center;
 }

@@ -4,8 +4,10 @@
   
 
   <div class="container">
+    
     <div class="profile">
-  <h1>Name: {{username}}</h1>
+  <h1> {{username}} </h1>
+  <!--<img src="https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png" alt="Profile picture">-->
   <img :src="avatar_url ? avatar_url : 'https://cdn.pixabay.com/photo/2015/10/05/22/37/blank-profile-picture-973460__480.png'" alt="Profile picture">
   </div>
   <div>
@@ -94,12 +96,11 @@ img {
 
 
 .container {
-
+  height:70vh;
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content:space-between;
   align-items: center;
-  gap: 4vw;
   width: 100%;
   padding-top: 30vh;
   background-image: url("../Imagenes/background.jpeg");
@@ -128,4 +129,6 @@ img {
   font-size: 18px;
   font-family: Copperplate, Copperplate Gothic Light, fantasy;
 }
+
+
 </style>

@@ -53,11 +53,14 @@ onMounted(async () => {
   background-image: url("../Imagenes/background.jpeg");
   background-size: cover;
   background-repeat: no-repeat;
+  height:100vh;
+  overflow: auto;
 
 }
 .taskItem{
   display: flex;
   justify-content: center;
+  align-content: ;
   flex-direction: row;
   flex-wrap: wrap;
   width: 100%;

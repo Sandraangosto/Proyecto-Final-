@@ -14,9 +14,9 @@ export const useUserStore = defineStore("user", {
         this.user = user;
         const { data: profile } = await supabase
         .from('profiles')
-        .select()
+        .select("*")
         .match({ user_id: this.user.id })
-
+        
         if (profile) this.profile = profile[0];
         console.log('user in store: ', this.user);
         console.log('profile in store: ', this.profile);
@@ -55,9 +55,9 @@ export const useUserStore = defineStore("user", {
         this.user = user;
         const { data: profile } = await supabase
         .from('profiles')
-        .select()
+        .select("*")
         .match({ user_id: this.user.id })
-
+        console.log(profile);
         if (profile) this.profile = profile[0];
         console.log('profile in store: ', profile);
       }
@@ -66,6 +66,18 @@ export const useUserStore = defineStore("user", {
     async signOut(){
       const { error } = await supabase.auth.signOut();
       if (error) throw error;
+    },
+    
+    async editProfile(username, website, name, avatar_url) {
+      let { data, error } = await supabase
+        .from("profiles")
+        .update({
+          username: username,
+          website: website,
+          full_name: name,
+          avatar_url: avatar_url,
+        })
+        .match({ user_id: this.user.id }); // user_id:
     },
   },
 
@@ -79,17 +91,7 @@ export const useUserStore = defineStore("user", {
     ],
   },
 
-  async editProfile(username, website, name, avatar_url) {
-    let { data, error } = await supabase
-      .from("profiles")
-      .update({
-        username: username,
-        website: website,
-        full_name: name,
-        avatar_url: avatar_url,
-      })
-      .match({ id: this.user.id }); // user_id:
-  },
+  
 });
 
 

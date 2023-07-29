@@ -9,7 +9,7 @@
           {{ task.description }}
         </p>
         <div class="botones">
-          <button @click="completedTask" class="boton1">
+          <button @click="toggleComplete" class="boton1">
             <img src="../Imagenes/tarea-completada.png" alt="tarea-completada"/>
            
           </button>
@@ -90,12 +90,6 @@ function inputToggle() {
 };
 
 
-//funcion para completar tareas
-const completedTask = () => {
-  emit("childComplete", props.task);
-  location.reload();
-
-};
 
 // Función para borrar la tarea a través de la store. El problema que tendremos aquí (y en NewTask.vue) es que cuando modifiquemos la base de datos los cambios no se verán reflejados en el v-for de Home.vue porque no estamos modificando la variable tasks guardada en Home. Usad el emit para cambiar esto y evitar ningún page refresh.
 const deleteTask = async() => {
@@ -138,14 +132,17 @@ const sendData = async () => {
 
 const toggleComplete = () => {
   props.task.is_complete = !props.task.is_complete;
-  taskStore.completeTask(props.task.id, props.task.is_complete);
-  location.reload();
+  console.log(props.task.is_complete)
+  taskStore.completeTask(props.task.is_complete,props.task.id);
+  //location.reload();
 
 };
 </script>
 
 <style scoped>
-
+.done{
+  text-decoration: line-through;
+}
 .task-item-fondo{
   /*background-color: rgb(20, 123, 213);*/
   background-color: transparent;
