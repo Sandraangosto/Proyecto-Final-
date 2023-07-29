@@ -143,6 +143,8 @@ Project Link Github: [https://github.com/Sandraangosto/Proyecto-Final-](https://
 
 Project Link Vercel: [https://proyecto-final-two-delta.vercel.app/auth/login](https://proyecto-final-two-delta.vercel.app/auth/login)
 
+Presentation Link Canva: [https://www.canva.com/design/DAFpwUoriFg/wQueESKe0hbHra7oGfasAQ/view?utm_content=DAFpwUoriFg&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink](https://www.canva.com/design/DAFpwUoriFg/wQueESKe0hbHra7oGfasAQ/view?utm_content=DAFpwUoriFg&utm_campaign=designshare&utm_medium=link&utm_source=publishsharelink)
+
 
 <!--https://readme.so/
 https://www.readme-templates.com/
